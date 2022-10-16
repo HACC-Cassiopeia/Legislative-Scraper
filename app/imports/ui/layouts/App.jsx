@@ -1,36 +1,36 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Meteor } from "meteor/meteor";
-import { Roles } from "meteor/alanning:roles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
-} from "react-router-dom";
-import Footer from "../components/Footer";
-import Landing from "../pages/Landing";
-import ListStuff from "../pages/ListStuff";
-import ListStuffAdmin from "../pages/ListStuffAdmin";
-import AddStuff from "../pages/AddStuff";
-import EditStuff from "../pages/EditStuff";
-import NotFound from "../pages/NotFound";
-import SignUp from "../pages/SignUp";
-import SignOut from "../pages/SignOut";
-import SignIn from "../pages/SignIn";
-import NotAuthorized from "../pages/NotAuthorized";
+} from 'react-router-dom';
+import Footer from '../components/Footer';
+import Landing from '../pages/Landing';
+import ListStuff from '../pages/ListStuff';
+import ListStuffAdmin from '../pages/ListStuffAdmin';
+import AddStuff from '../pages/AddStuff';
+import EditStuff from '../pages/EditStuff';
+import NotFound from '../pages/NotFound';
+import SignUp from '../pages/SignUp';
+import SignOut from '../pages/SignOut';
+import SignIn from '../pages/SignIn';
+import NotAuthorized from '../pages/NotAuthorized';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
   <Router>
-    <div className="d-flex flex-column min-vh-100">
+    <div className='d-flex flex-column min-vh-100'>
       <Routes>
-        <Route exact path="/" element={<Landing />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signout" element={<SignOut />} />
+        <Route exact path='/' element={<Landing />} />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signout' element={<SignOut />} />
         <Route
-          path="/home"
+          path='/home'
           element={
             <ProtectedRoute>
               <Landing />
@@ -38,7 +38,7 @@ const App = () => (
           }
         />
         <Route
-          path="/list"
+          path='/list'
           element={
             <ProtectedRoute>
               <ListStuff />
@@ -46,7 +46,7 @@ const App = () => (
           }
         />
         <Route
-          path="/add"
+          path='/add'
           element={
             <ProtectedRoute>
               <AddStuff />
@@ -54,7 +54,7 @@ const App = () => (
           }
         />
         <Route
-          path="/edit/:_id"
+          path='/edit/:_id'
           element={
             <ProtectedRoute>
               <EditStuff />
@@ -62,15 +62,15 @@ const App = () => (
           }
         />
         <Route
-          path="/admin"
+          path='/admin'
           element={
             <AdminProtectedRoute>
               <ListStuffAdmin />
             </AdminProtectedRoute>
           }
         />
-        <Route path="/notauthorized" element={<NotAuthorized />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path='/notauthorized' element={<NotAuthorized />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   </Router>
@@ -83,7 +83,7 @@ const App = () => (
  */
 const ProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
-  return isLogged ? children : <Navigate to="/signin" />;
+  return isLogged ? children : <Navigate to='/signin' />;
 };
 
 /**
@@ -94,10 +94,10 @@ const ProtectedRoute = ({ children }) => {
 const AdminProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
   if (!isLogged) {
-    return <Navigate to="/signin" />;
+    return <Navigate to='/signin' />;
   }
-  const isAdmin = Roles.userIsInRole(Meteor.userId(), "admin");
-  return isLogged && isAdmin ? children : <Navigate to="/notauthorized" />;
+  const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+  return isLogged && isAdmin ? children : <Navigate to='/notauthorized' />;
 };
 
 // Require a component and location to be passed to each ProtectedRoute.
