@@ -44,30 +44,37 @@ const SignIn = () => {
     <Container id="signin-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <Col className="text-center">
-            <h2>Login to your account</h2>
-          </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
+            <Card className="card-footer">
+              <Card.Header>
+                <Col className="text-center">
+                  <h3>Login to your account</h3>
+                </Col>
+              </Card.Header>
               <Card.Body>
                 <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
                 <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
                 <ErrorsField />
-                <SubmitField id="signin-form-submit" />
+                <Col className="text-center">
+                  <SubmitField id="signin-form-submit" />
+                </Col>
               </Card.Body>
+              <Alert variant="light">
+                <Col className="text-center">
+                  <h7>Don&apos;t have an account yet? </h7>
+                  <Link to="/signup">Sign Up</Link>
+                </Col>
+                {error === '' ? (
+                  ''
+                ) : (
+                  <Alert variant="danger">
+                    <Alert.Heading>Login was not successful</Alert.Heading>
+                    {error}
+                  </Alert>
+                )}
+              </Alert>
             </Card>
           </AutoForm>
-          <Alert variant="light">
-            <Link to="/signup">Click here to Register</Link>
-          </Alert>
-          {error === '' ? (
-            ''
-          ) : (
-            <Alert variant="danger">
-              <Alert.Heading>Login was not successful</Alert.Heading>
-              {error}
-            </Alert>
-          )}
         </Col>
       </Row>
     </Container>

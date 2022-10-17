@@ -8,7 +8,7 @@ import {
   Navbar,
   Button,
 } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
 
 const landingStyleA = {
