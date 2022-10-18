@@ -41,25 +41,24 @@ const introMessageStyle = {
 const Landing = () => (
   <div>
     <div className='headerTopTitle'>
-      <Navbar style={{ backgroundColor: 'transparent' }}>
-        <Container>
-          <Navbar.Brand>
-            <h2>Legislative Tracker</h2>
-          </Navbar.Brand>
-          <Nav className='justify-content-end'>
-            <Button variant='primary'>Log In/Sign Up</Button>{' '}
-          </Nav>
-        </Container>
+      <Navbar>
+        <Navbar.Brand>
+          <h2>Legislative Tracker</h2>
+        </Navbar.Brand>
+        <Nav
+          className='d-flex justify-content-center navbarContainer'
+          fixed='top'>
+          <Nav.Item>Log In/Sign Up</Nav.Item>
+        </Nav>
       </Navbar>
-      <Container>
-        <div style={introMessageStyle}>
-          <h3>Track & Monitor your proposals</h3>
-          <p>
-            Have an idea to improve Hawaii <br />
-            Submit it and track it here!
-          </p>
-        </div>
-      </Container>
+
+      <div style={introMessageStyle}>
+        <h3>Track & Monitor your proposals</h3>
+        <p>
+          Have an idea to improve Hawaii <br />
+          Submit it and track it here!
+        </p>
+      </div>
     </div>
     <Row style={landingStyleB}>
       <Col style={messageStyle}>
