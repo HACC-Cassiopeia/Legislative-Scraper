@@ -8,7 +8,7 @@ import {
   Navbar,
   Button,
 } from 'react-bootstrap';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
 
 const landingStyleA = {
@@ -47,7 +47,11 @@ const Landing = () => (
             <h2>Legislative Tracker</h2>
           </Navbar.Brand>
           <Nav className='justify-content-end'>
-            <Button variant='primary'>Log In/Sign Up</Button>{' '}
+            <Button variant='primary' as={NavLink} to='/signin'>
+              Log In
+            </Button>
+            &nbsp;
+            <Button>Sign Up</Button>
           </Nav>
         </Container>
       </Navbar>
@@ -105,13 +109,17 @@ const Landing = () => (
     <Row style={landingStyleA}>
       <Col>
         <h3>Have an account?</h3>
-        <Icon.PersonCheck size={50} />
-        <p>Welcome back!</p>
+        <Nav.Link as={NavLink} to='/signin'>
+          <Icon.PersonCheck size={50} />
+          <p>Welcome back!</p>
+        </Nav.Link>
       </Col>
       <Col>
         <h3>Need to sign up?</h3>
-        <Icon.PersonPlus size={50} />
-        <p>Create an account!</p>
+        <Nav.Link as={NavLink} to='/signup'>
+          <Icon.PersonPlus size={50} />
+          <p>Create an account!</p>
+        </Nav.Link>
       </Col>
     </Row>
     <div style={landingStyleB}>
