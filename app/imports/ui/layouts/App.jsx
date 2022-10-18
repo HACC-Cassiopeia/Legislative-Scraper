@@ -24,55 +24,54 @@ import NotAuthorized from '../pages/NotAuthorized';
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
   <Router>
-    <div className="d-flex flex-column min-vh-100">
-      <NavBar />
+    <div className='d-flex flex-column min-vh-100'>
       <Routes>
-        <Route exact path="/" element={<Landing />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signout" element={<SignOut />} />
+        <Route exact path='/' element={<Landing />} />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signout' element={<SignOut />} />
         <Route
-          path="/home"
-          element={(
+          path='/home'
+          element={
             <ProtectedRoute>
               <Landing />
             </ProtectedRoute>
-          )}
+          }
         />
         <Route
-          path="/list"
-          element={(
+          path='/list'
+          element={
             <ProtectedRoute>
               <ListStuff />
             </ProtectedRoute>
-          )}
+          }
         />
         <Route
-          path="/add"
-          element={(
+          path='/add'
+          element={
             <ProtectedRoute>
               <AddStuff />
             </ProtectedRoute>
-          )}
+          }
         />
         <Route
-          path="/edit/:_id"
-          element={(
+          path='/edit/:_id'
+          element={
             <ProtectedRoute>
               <EditStuff />
             </ProtectedRoute>
-          )}
+          }
         />
         <Route
-          path="/admin"
-          element={(
+          path='/admin'
+          element={
             <AdminProtectedRoute>
               <ListStuffAdmin />
             </AdminProtectedRoute>
-          )}
+          }
         />
-        <Route path="/notauthorized" element={<NotAuthorized />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path='/notauthorized' element={<NotAuthorized />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   </Router>
@@ -85,7 +84,7 @@ const App = () => (
  */
 const ProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
-  return isLogged ? children : <Navigate to="/signin" />;
+  return isLogged ? children : <Navigate to='/signin' />;
 };
 
 /**
@@ -96,10 +95,10 @@ const ProtectedRoute = ({ children }) => {
 const AdminProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
   if (!isLogged) {
-    return <Navigate to="/signin" />;
+    return <Navigate to='/signin' />;
   }
   const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
-  return isLogged && isAdmin ? children : <Navigate to="/notauthorized" />;
+  return isLogged && isAdmin ? children : <Navigate to='/notauthorized' />;
 };
 
 // Require a component and location to be passed to each ProtectedRoute.
