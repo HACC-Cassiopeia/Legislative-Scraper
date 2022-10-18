@@ -8,6 +8,7 @@ import {
   Routes,
   Navigate,
 } from 'react-router-dom';
+import Home from '../pages/Home';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
@@ -36,7 +37,7 @@ const App = () => (
           path='/home'
           element={
             <ProtectedRoute>
-              <Landing />
+              <Home />
             </ProtectedRoute>
           }
         />
