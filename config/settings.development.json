@@ -24,11 +24,10 @@
       "hearingType": "Hearing",
       "doePosition": "Comments",
       "status": "Deferred/Inactive",
-      "hyperlinks": {
-        "measureStatusLink": "https://www.capitol.hawaii.gov/measure_indiv.aspx?billtype=HB&billnumber=1078&year=2022",
-        "youtubeRecordings": ["youtubeLink1", "youtubeLink2"],
-        "committeeReports": ["linkPdf1", "linkPdf2"]
-      }
+      "measureStatusLink": "https://www.capitol.hawaii.gov/measure_indiv.aspx?billtype=HB&billnumber=1078&year=2022",
+      "youtubeRecordingsLink": ["youtubeLink1", "youtubeLink2"],
+      "committeeReportsLink": ["linkPdf1", "linkPdf2"]
+
     },
     {
       "billNumber":  "HB1070 HD1",
@@ -42,11 +41,9 @@
       "hearingType": "Hearing",
       "doePosition": "Comments",
       "status": "Active",
-      "hyperlinks": {
-        "measureStatusLink": "https://www.capitol.hawaii.gov/measure_indiv.aspx?billtype=HB&billnumber=1078&year=2022",
-        "youtubeRecordings": ["youtubeLink1", "youtubeLink2"],
-        "committeeReports": ["linkPdf1", "linkPdf2"]
-      }
+      "measureStatusLink": "https://www.capitol.hawaii.gov/measure_indiv.aspx?billtype=HB&billnumber=1078&year=2022",
+      "youtubeRecordingsLink": ["youtubeLink1", "youtubeLink2"],
+      "committeeReportsLink": ["linkPdf1", "linkPdf2"]
     },
     {
       "billNumber":  "HB1099 HD1",
@@ -60,11 +57,9 @@
       "hearingType": "Hearing",
       "doePosition": "Comments",
       "status": "Active",
-      "hyperlinks": {
-        "measureStatusLink": "https://www.capitol.hawaii.gov/measure_indiv.aspx?billtype=HB&billnumber=1078&year=2022",
-        "youtubeRecordings": ["youtubeLink1", "youtubeLink2"],
-        "committeeReports": ["linkPdf1", "linkPdf2"]
-      }
+      "measureStatusLink": "https://www.capitol.hawaii.gov/measure_indiv.aspx?billtype=HB&billnumber=1078&year=2022",
+      "youtubeRecordingsLink": ["youtubeLink1", "youtubeLink2"],
+      "committeeReportsLink": ["linkPdf1", "linkPdf2"]
     }
   ]
 }
