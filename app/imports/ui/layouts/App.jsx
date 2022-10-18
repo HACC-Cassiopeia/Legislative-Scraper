@@ -20,6 +20,7 @@ import SignIn from '../pages/SignIn';
 // import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 import NotAuthorized from '../pages/NotAuthorized';
+import BillResolutionTracker from '../pages/BillResolutionTracker';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -31,6 +32,7 @@ const App = () => (
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
+        <Route path="/details" element={<BillResolutionTracker />} />
         <Route
           path="/home"
           element={(
