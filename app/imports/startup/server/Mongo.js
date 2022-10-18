@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
+import { FakeData } from '../../api/fakeData/FakeData.js';
 
 /* eslint-disable no-console */
 
@@ -9,10 +10,22 @@ const addData = (data) => {
   Stuffs.collection.insert(data);
 };
 
+// copied add fake data
+const addFakeData = (data) => {
+  console.log(`Adding: ${JSON.stringify(data)}`);
+  FakeData.collection.insert(data);
+};
+
 // Initialize the StuffsCollection if empty.
 if (Stuffs.collection.find().count() === 0) {
   if (Meteor.settings.defaultData) {
     console.log('Creating default data.');
     Meteor.settings.defaultData.forEach(data => addData(data));
   }
+}
+
+// Initialization of FakeDataCollection
+if (Meteor.settings.fakeData) {
+  console.log('Creating fake data database');
+  Meteor.settings.fakeData.forEach(data => addFakeData(data));
 }
