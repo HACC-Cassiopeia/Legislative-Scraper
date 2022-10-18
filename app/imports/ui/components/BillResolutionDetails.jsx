@@ -125,7 +125,7 @@ const BillResolutionDetails = () => (
         <Row className="py-2">
           <Col>
             {/* INTRODUCER */}
-            <a href="#">B. KOBAYASHI</a> 01/27/2021
+            <div className="fakeLink4Rob">B. KOBAYASHI</div> 01/27/2021
           </Col>
         </Row>
       </Col>
@@ -260,8 +260,8 @@ const BillResolutionDetails = () => (
         <Row className="py-1">
           <Col>
             {/* VERSIONS */}
-            <a href="#">HB1078 HD1</a> <br />
-            <a href="#">HB1078</a>
+            <div className="fakeLink4Rob">HB1078 HD1</div>
+            <div className="fakeLink4Rob">HB1078</div>
           </Col>
         </Row>
       </Col>
@@ -274,8 +274,8 @@ const BillResolutionDetails = () => (
         <Row className="py-1">
           <Col>
             {/* COMMITTEE REPORTS */}
-            <a href="#">HB1078 HD1 HSCR479</a> <br />
-            <a href="#">HB1078 HD1 HSCR784</a>
+            <div className="fakeLink4Rob">HB1078 HD1 HSCR479</div>
+            <div className="fakeLink4Rob">HB1078 HD1 HSCR784</div>
           </Col>
         </Row>
       </Col>
@@ -288,8 +288,8 @@ const BillResolutionDetails = () => (
         <Row className="py-1">
           <Col>
             {/* COMMITTEE REPORTS */}
-            <a href="#">HEARING EDN 02-16-21 2:00P</a> <br />
-            <a href="#">HEARING FIN 03-02-21 1 11:00A</a>
+            <div className="fakeLink4Rob">HEARING EDN 02-16-21 2:00P</div>
+            <div className="fakeLink4Rob">HEARING FIN 03-02-21 1 11:00A</div>
           </Col>
         </Row>
       </Col>
@@ -335,7 +335,7 @@ const BillResolutionDetails = () => (
           <Col>
             {/* TESTIFIER LIST */}
             04/04/2022 1:30 PM - Randall T. Tanaka <br />
-            <a href="#">03/22/2022 2:00 PM - Keith Hayashi / Randall Tanaka</a>
+            <div className="fakeLink4Rob">03/22/2022 2:00 PM - Keith Hayashi / Randall Tanaka</div>
           </Col>
         </Row>
       </Col>
@@ -348,8 +348,8 @@ const BillResolutionDetails = () => (
         <Row className="py-2">
           <Col>
             {/* APPROVED TESTIMONY LIST */}
-            <FilePdfFill /> <a href="#">SB3096-HD2_EDN_04-04-22_FIN_Support.pdf</a> <br />
-            <FilePdfFill /> <a href="#">SB3096-SD1_EDN_03-22-22_EDN_Support.pdf</a> <br />
+            <div className="fakeLink4Rob"><FilePdfFill /> SB3096-HD2_EDN_04-04-22_FIN_Support.pdf</div>
+            <div className="fakeLink4Rob"><FilePdfFill /> SB3096-SD1_EDN_03-22-22_EDN_Support.pdf</div>
           </Col>
         </Row>
       </Col>
