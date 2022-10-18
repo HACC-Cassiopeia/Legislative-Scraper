@@ -17,7 +17,7 @@ export const committees = [
   'WAM', 'WTL',
 ];
 
-export const offices = ['BOE', 'OCID', 'OFS', 'OFO', 'OITS', 'OSIP', 'OSSS', 'OTM'];
+export const offices = ['BOE', 'OCID', 'OFS', 'OFO', 'OHE', 'OITS', 'OSIP', 'OSSS', 'OTM', 'SUPT'];
 
 class FakeDataCollection {
   constructor() {
