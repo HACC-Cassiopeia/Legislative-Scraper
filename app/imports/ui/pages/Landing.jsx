@@ -8,7 +8,7 @@ import {
   Navbar,
   Button,
 } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
 
 const landingStyleA = {
@@ -41,15 +41,15 @@ const introMessageStyle = {
 const Landing = () => (
   <div>
     <div className='headerTopTitle'>
-      <Navbar>
-        <Navbar.Brand>
-          <h2>Legislative Tracker</h2>
-        </Navbar.Brand>
-        <Nav
-          className='d-flex justify-content-center navbarContainer'
-          fixed='top'>
-          <Nav.Item>Log In/Sign Up</Nav.Item>
-        </Nav>
+      <Navbar style={{ backgroundColor: 'transparent' }}>
+        <Container>
+          <Navbar.Brand>
+            <h2>Legislative Tracker</h2>
+          </Navbar.Brand>
+          <Nav className='justify-content-end'>
+            <Button variant='primary'>Log In/Sign Up</Button>{' '}
+          </Nav>
+        </Container>
       </Navbar>
 
       <div style={introMessageStyle}>

@@ -43,32 +43,37 @@ const SignUp = ({ location }) => {
     <Container id="signup-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <Col className="text-center">
-            <h2>Register your account</h2>
-          </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
+            <Card className="card-footer">
+              <Card.Header>
+                <Col className="text-center">
+                  <h3>Register your account</h3>
+                </Col>
+              </Card.Header>
               <Card.Body>
                 <TextField name="email" placeholder="E-mail address" />
                 <TextField name="password" placeholder="Password" type="password" />
                 <ErrorsField />
-                <SubmitField />
+                <Col className="text-center">
+                  <SubmitField />
+                </Col>
               </Card.Body>
+              <Alert variant="light">
+                <Col className="text-center">
+                  <h7>Already have an account? </h7>
+                  <Link to="/signin">Sign In</Link>
+                </Col>
+              </Alert>
+              {error === '' ? (
+                ''
+              ) : (
+                <Alert variant="danger">
+                  <Alert.Heading>Registration was not successful</Alert.Heading>
+                  {error}
+                </Alert>
+              )}
             </Card>
           </AutoForm>
-          <Alert variant="light">
-            Already have an account? Login
-            {' '}
-            <Link to="/signin">here</Link>
-          </Alert>
-          {error === '' ? (
-            ''
-          ) : (
-            <Alert variant="danger">
-              <Alert.Heading>Registration was not successful</Alert.Heading>
-              {error}
-            </Alert>
-          )}
         </Col>
       </Row>
     </Container>
