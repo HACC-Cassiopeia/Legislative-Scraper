@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Meteor } from 'meteor/meteor';
-import { useTracker } from 'meteor/react-meteor-data';
+// import { Meteor } from 'meteor/meteor';
+// import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Nav, Button } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
+import SignoutCheck from './SignoutCheck';
+import MobileSignoutCheck from './MobileSignOutCheck';
 import './style/Component.css';
 
 const SideNavBar = () => {
@@ -71,11 +73,7 @@ const SideNavBar = () => {
             </Button>
           </Nav.Link>
           <Nav.Link>
-            <Button as={NavLink} to="/signout">
-              <b>
-                <Icon.BoxArrowLeft /> SIGN OUT
-              </b>
-            </Button>
+            <SignoutCheck />
           </Nav.Link>
         </Nav.Item>
       </Nav>
@@ -106,11 +104,7 @@ const SideNavBar = () => {
           </Button>
         </Nav.Link>
         <Nav.Link>
-          <Button as={NavLink} to="/signout">
-            <b>
-              <Icon.BoxArrowLeft />
-            </b>
-          </Button>
+          <MobileSignoutCheck />
         </Nav.Link>
       </Nav.Item>
     </Nav>
