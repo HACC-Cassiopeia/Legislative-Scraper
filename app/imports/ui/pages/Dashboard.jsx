@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Table, Button, Accordion, Dropdown, DropdownButton } from 'react-bootstrap';
 // import { useTracker } from 'meteor/react-meteor-data';
-// import { FakeData } from '../../api/fakeData/FakeData';
+// import { Measures } from '../../api/measures/Measures';
 
 const Dashboard = () => {
   /* states for item filtering */
@@ -12,7 +12,7 @@ const Dashboard = () => {
   /* importing fake database info */
   /*
   const { bills } = useTracker(() => {
-    const billItems = FakeData.collection.find({}).fetch();
+    const billItems = Measures.collection.find({}).fetch();
     return {
       bills: billItems,
     };
