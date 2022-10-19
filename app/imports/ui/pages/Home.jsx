@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Row, Col, Button, Container } from 'react-bootstrap';
 import SideNavBar from '../components/SideNavBar';
+
 const Home = () => {
-  const [isMobile, setIsMobile] = useState(false);
   const mainBodyStyle = {
     marginLeft: '25%',
     maxWidth: '65vw',
@@ -16,7 +16,8 @@ const Home = () => {
           style={{
             textAlign: 'center',
             fontWeight: 'bolder',
-          }}>
+          }}
+        >
           Legislative Tracking System
         </h2>
         <hr />

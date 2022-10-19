@@ -42,46 +42,46 @@ const SignIn = () => {
   // console.log('render', error, redirect);
   // if correct authentication, redirect to page instead of login screen
   if (redirect) {
-    return <Navigate to='/home' />;
+    return <Navigate to="/home" />;
   }
   // Otherwise return the Login form.
   return (
-    <Container id='signin-page' className='py-3'>
-      <Row className='justify-content-center'>
+    <Container id="signin-page" className="py-3">
+      <Row className="justify-content-center">
         <Col xs={5}>
           <AutoForm schema={bridge} onSubmit={(data) => submit(data)}>
-            <Card className='card-footer'>
+            <Card className="card-footer">
               <Card.Header>
-                <Col className='text-center'>
+                <Col className="text-center">
                   <h3>Login to your account</h3>
                 </Col>
               </Card.Header>
               <Card.Body>
                 <TextField
-                  id='signin-form-email'
-                  name='email'
-                  placeholder='E-mail address'
+                  id="signin-form-email"
+                  name="email"
+                  placeholder="E-mail address"
                 />
                 <TextField
-                  id='signin-form-password'
-                  name='password'
-                  placeholder='Password'
-                  type='password'
+                  id="signin-form-password"
+                  name="password"
+                  placeholder="Password"
+                  type="password"
                 />
                 <ErrorsField />
-                <Col className='text-center'>
-                  <SubmitField id='signin-form-submit' />
+                <Col className="text-center">
+                  <SubmitField id="signin-form-submit" />
                 </Col>
               </Card.Body>
-              <Alert variant='light'>
-                <Col className='text-center'>
+              <Alert variant="light">
+                <Col className="text-center">
                   <h7>Don&apos;t have an account yet? </h7>
-                  <Link to='/signup'>Sign Up</Link>
+                  <Link to="/signup">Sign Up</Link>
                 </Col>
                 {error === '' ? (
                   ''
                 ) : (
-                  <Alert variant='danger'>
+                  <Alert variant="danger">
                     <Alert.Heading>Login was not successful</Alert.Heading>
                     {error}
                   </Alert>

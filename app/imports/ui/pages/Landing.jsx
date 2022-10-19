@@ -40,14 +40,14 @@ const introMessageStyle = {
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
   <div>
-    <div className='headerTopTitle'>
+    <div className="headerTopTitle">
       <Navbar style={{ backgroundColor: 'transparent' }}>
         <Container>
           <Navbar.Brand>
             <h2>Legislative Tracker</h2>
           </Navbar.Brand>
-          <Nav className='justify-content-end'>
-            <Button variant='primary' as={NavLink} to='/signin'>
+          <Nav className="justify-content-end">
+            <Button variant="primary" as={NavLink} to="/signin">
               Log In
             </Button>
             &nbsp;
@@ -73,7 +73,7 @@ const Landing = () => (
       <Col>
         <Image
           style={{ maxWidth: '35%' }}
-          src='https://1.bp.blogspot.com/-r7LqBL2a1GA/XaKa2g3kWXI/AAAAAAABVjY/tryXn3QOacc1U9WGpKPjsggNRsIyUEhHwCNcBGAsYHQ/s1600/document_list.png'
+          src="https://1.bp.blogspot.com/-r7LqBL2a1GA/XaKa2g3kWXI/AAAAAAABVjY/tryXn3QOacc1U9WGpKPjsggNRsIyUEhHwCNcBGAsYHQ/s1600/document_list.png"
         />
       </Col>
     </Row>
@@ -86,7 +86,7 @@ const Landing = () => (
         <Col>
           <Image
             style={{ maxWidth: '45%' }}
-            src='https://1.bp.blogspot.com/-C6vAsZfl8ic/Xq5vGe5oFpI/AAAAAAABYtE/DPvun2JQUYI7iLNp__Q2zZX5gitobZwyACEwYBhgL/s1600/computer_document_spreadsheet.png'
+            src="https://1.bp.blogspot.com/-C6vAsZfl8ic/Xq5vGe5oFpI/AAAAAAABYtE/DPvun2JQUYI7iLNp__Q2zZX5gitobZwyACEwYBhgL/s1600/computer_document_spreadsheet.png"
           />
         </Col>
       </Row>
@@ -102,21 +102,21 @@ const Landing = () => (
       <Col>
         <Image
           style={{ maxWidth: '35%' }}
-          src='https://4.bp.blogspot.com/-n39YthHIJDY/Wn1VskGy9MI/AAAAAAABKEU/600dCV5x4uINvIyB_1a2xI82mxzA5kOZACLcBGAs/s350/computer_businessman1_smile.png'
+          src="https://4.bp.blogspot.com/-n39YthHIJDY/Wn1VskGy9MI/AAAAAAABKEU/600dCV5x4uINvIyB_1a2xI82mxzA5kOZACLcBGAs/s350/computer_businessman1_smile.png"
         />
       </Col>
     </Row>
     <Row style={landingStyleA}>
       <Col>
         <h3>Have an account?</h3>
-        <Nav.Link as={NavLink} to='/signin'>
+        <Nav.Link as={NavLink} to="/signin">
           <Icon.PersonCheck size={50} />
           <p>Welcome back!</p>
         </Nav.Link>
       </Col>
       <Col>
         <h3>Need to sign up?</h3>
-        <Nav.Link as={NavLink} to='/signup'>
+        <Nav.Link as={NavLink} to="/signup">
           <Icon.PersonPlus size={50} />
           <p>Create an account!</p>
         </Nav.Link>
