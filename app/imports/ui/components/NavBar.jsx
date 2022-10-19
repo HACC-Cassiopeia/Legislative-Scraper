@@ -34,6 +34,9 @@ const NavBar = () => {
                 <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">
                   Add Stuff
                 </Nav.Link>,
+                <Nav.Link id="add-test-nav" as={NavLink} to="/add-testimony" key="add-test">
+                  New Testimony
+                </Nav.Link>,
                 <Nav.Link
                   id="list-stuff-nav"
                   as={NavLink}

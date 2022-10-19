@@ -17,7 +17,7 @@ class TestimonyCollection {
       committeeName: String,
       billNumber: String,
       draftNumber: String,
-      hearingDate: Date,
+      hearingDate: String,
       hearingLocation: String,
       position: String,
       introduction: String,

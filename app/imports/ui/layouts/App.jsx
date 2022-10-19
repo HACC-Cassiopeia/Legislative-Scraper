@@ -22,6 +22,7 @@ import Dashboard from '../pages/Dashboard';
 import NavBar from '../components/NavBar';
 import NotAuthorized from '../pages/NotAuthorized';
 import BillResolutionTracker from '../pages/BillResolutionTracker';
+import AddTestimony from '../pages/AddTestimony';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -34,6 +35,7 @@ const App = () => (
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/add-testimony" element={<AddTestimony />} />
         <Route path="/details" element={<BillResolutionTracker />} />
         <Route
           path="/home"
