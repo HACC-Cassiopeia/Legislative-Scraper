@@ -45,11 +45,11 @@ const SignUpModal = ({ location }) => {
 
   // if correct authentication, redirect to from: page instead of signup screen
   if (redirectToReferer) {
-    return <Navigate to='/home' />;
+    return <Navigate to="/home" />;
   }
   return (
     <>
-      <Button variant='primary' onClick={handleShow}>
+      <Button variant="primary" onClick={handleShow}>
         <b>
           <Icon.PersonPlus /> <b>Sign Up</b>
         </b>
@@ -63,23 +63,23 @@ const SignUpModal = ({ location }) => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <TextField name='email' placeholder='E-mail address' />
-            <TextField name='password' placeholder='Password' type='password' />
+            <TextField name="email" placeholder="E-mail address" />
+            <TextField name="password" placeholder="Password" type="password" />
             <ErrorsField />
-            <div className='text-center'>
+            <div className="text-center">
               <SubmitField />
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <div className='text-center'>
+            <div className="text-center">
               <h7>Already have an account? </h7>
-              <Link to='/signin'>Sign In</Link>
+              <Link to="/signin">Sign In</Link>
             </div>
           </Modal.Footer>
           {error === '' ? (
             ''
           ) : (
-            <Alert variant='danger'>
+            <Alert variant="danger">
               <Alert.Heading>Registration was not successful</Alert.Heading>
               {error}
             </Alert>
