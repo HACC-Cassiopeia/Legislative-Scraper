@@ -1,6 +1,7 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { Archive, FilePdfFill, Youtube } from 'react-bootstrap-icons';
+import { jsPDF } from 'jspdf';
 
 const BillResolutionDetails = () => (
   <Container className="text-center border border-1 small mb-5">
@@ -350,6 +351,30 @@ const BillResolutionDetails = () => (
             {/* APPROVED TESTIMONY LIST */}
             <div className="fakeLink4Rob"><FilePdfFill /> SB3096-HD2_EDN_04-04-22_FIN_Support.pdf</div>
             <div className="fakeLink4Rob"><FilePdfFill /> SB3096-SD1_EDN_03-22-22_EDN_Support.pdf</div>
+            <Button onClick={() => {
+              // eslint-disable-next-line new-cap
+              const doc = new jsPDF();
+
+              doc.setFontSize(8);
+              doc.setFont('helvetica', 'bold');
+              doc.text('DAVID Y. IGE', 20, 35);
+              doc.text('       KEITH T. HAYASHI', 160, 35);
+              doc.setFont('helvetica', 'normal');
+              doc.text(' GOVERNER', 20, 38);
+              doc.text('INTERIM SUPERINTENDENT', 160, 38);
+              doc.addImage('/images/hawaii-state-seal.gif', 'gif', 91, 22, 26, 26);
+              doc.setFontSize(10);
+              doc.setFont('helvetica', 'bold');
+              doc.text('STATE OF HAWAI\'I', 88, 58, null, null, 'center');
+              doc.text('DEPARTMENT OF EDUCATION', 78, 62, null, null, 'center');
+              doc.setFont('helvetica', 'normal');
+              doc.text('P.O. BOX 2360', 92, 66, null, null, 'center');
+              doc.text('HONOLULU, HAWAI\'I 96804', 82, 70, null, null, 'center');
+              doc.save('myPDF.pdf');
+            }}
+            >
+              Click Me
+            </Button>
           </Col>
         </Row>
       </Col>
