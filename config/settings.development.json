@@ -11,6 +11,19 @@
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
 
+  "testimonies": [
+    {
+      "committeeChair": "Some name",
+      "committeeName": "Some comittee",
+      "billNumber": "HB1078",
+      "draftNumber": "HB107",
+      "hearingDate": "2022/10/14",
+      "hearingLocation": "Some location",
+      "position": "Some position",
+      "introduction": "Some introduction"
+    }
+  ],
+
   "fakeData": [
     {
       "billNumber":  "HB1078 HD1",
