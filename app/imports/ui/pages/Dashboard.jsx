@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Table, Button, Accordion, Dropdown, DropdownButton } from 'react-bootstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Table,
+  Accordion,
+  Dropdown,
+  DropdownButton,
+} from 'react-bootstrap';
 // import { useTracker } from 'meteor/react-meteor-data';
 // import { Measures } from '../../api/measures/Measures';
+import SideNavBar from '../components/SideNavBar';
 
 const Dashboard = () => {
   /* states for item filtering */
@@ -60,25 +69,27 @@ const Dashboard = () => {
         </tr>,
       );
     }
-    return (
-      <tbody>
-        {data}
-      </tbody>
-    );
+    return <tbody>{data}</tbody>;
   };
-
+  /**
   const returnSideMenu = () => (
     <Row>
       <Col className="pt-3">
-        <Button className="py-0" variant="link">Create Tracking Document</Button>
+        <Button className="py-0" variant="link">
+          Create Tracking Document
+        </Button>
         <hr />
-        <Button className="py-0" variant="link">Another option here</Button>
+        <Button className="py-0" variant="link">
+          Another option here
+        </Button>
         <hr />
-        <Button className="py-0" variant="link">Idk maybe another option here</Button>
+        <Button className="py-0" variant="link">
+          Idk maybe another option here
+        </Button>
         <hr />
       </Col>
     </Row>
-  );
+  ); */
 
   const returnFilter = () => (
     <Container className="pb-3">
@@ -116,7 +127,11 @@ const Dashboard = () => {
             <Row>
               <Col>
                 Office <br />
-                <DropdownButton id="dropdown-basic-button" title={office} onSelect={(e) => setOffice(e)}>
+                <DropdownButton
+                  id="dropdown-basic-button"
+                  title={office}
+                  onSelect={(e) => setOffice(e)}
+                >
                   <Dropdown.Item eventKey="OCID">OCID</Dropdown.Item>
                   <Dropdown.Item eventKey="OFO">OFO</Dropdown.Item>
                   <Dropdown.Item eventKey="OFS">OFS</Dropdown.Item>
@@ -129,18 +144,34 @@ const Dashboard = () => {
               </Col>
               <Col>
                 Status <br />
-                <DropdownButton id="dropdown-basic-button" title={action} onSelect={(e) => setAction(e)}>
+                <DropdownButton
+                  id="dropdown-basic-button"
+                  title={action}
+                  onSelect={(e) => setAction(e)}
+                >
                   <Dropdown.Item eventKey="Action">Action</Dropdown.Item>
-                  <Dropdown.Item eventKey="Another action">Another action</Dropdown.Item>
-                  <Dropdown.Item eventKey="Something else">Something else</Dropdown.Item>
+                  <Dropdown.Item eventKey="Another action">
+                    Another action
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="Something else">
+                    Something else
+                  </Dropdown.Item>
                 </DropdownButton>
               </Col>
               <Col>
                 Action <br />
-                <DropdownButton id="dropdown-basic-button" title={status} onSelect={(e) => setStatus(e)}>
+                <DropdownButton
+                  id="dropdown-basic-button"
+                  title={status}
+                  onSelect={(e) => setStatus(e)}
+                >
                   <Dropdown.Item eventKey="Action">Action</Dropdown.Item>
-                  <Dropdown.Item eventKey="Another action">Another action</Dropdown.Item>
-                  <Dropdown.Item eventKey="Something else">Something else</Dropdown.Item>
+                  <Dropdown.Item eventKey="Another action">
+                    Another action
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="Something else">
+                    Something else
+                  </Dropdown.Item>
                 </DropdownButton>
               </Col>
               <Col />
@@ -175,19 +206,15 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Row id="dashboard-screen">
-        <Col id="dashboard-sideMenu">
-          {returnSideMenu()}
-        </Col>
-        <Col>
-          <Row id="dashboard-filter">
-            {returnFilter()}
-          </Row>
-          <Row id="dashboard-list">
-            {returnList()}
-          </Row>
-        </Col>
-      </Row>
+      <SideNavBar />
+      <div id="mainBody">
+        <Row id="dashboard-screen">
+          <Col>
+            <Row id="dashboard-filter">{returnFilter()}</Row>
+            <Row id="dashboard-list">{returnList()}</Row>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 };

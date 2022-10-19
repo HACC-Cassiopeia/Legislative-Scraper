@@ -5,7 +5,7 @@
 :root {
   --matr-navbar-bg: #ececec;
   --matr-navbar-bg-rgb: 236, 236, 236;
-  --bs-body-font-family: 'Oswald', sans-serif !important;;
+  --bs-body-font-family: 'Oswald', sans-serif !important;
 }
 
 /* Change bootstrap variable values.
@@ -49,7 +49,7 @@ h2 {
 #dashboard-filter {
 }
 
-#dashboard-list thead{
+#dashboard-list thead {
   position: sticky;
   top: 0;
   margin: 0 0 0 0;
@@ -85,4 +85,9 @@ h2 {
 .fakeLink4Rob {
   color: #6f5cf3;
   text-decoration-line: underline;
+}
+
+#mainBody {
+  margin-left: 25%;
+  max-width: 65vw;
 }

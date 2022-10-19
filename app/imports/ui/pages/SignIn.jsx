@@ -4,7 +4,12 @@ import { Meteor } from 'meteor/meteor';
 import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import {
+  AutoForm,
+  ErrorsField,
+  SubmitField,
+  TextField,
+} from 'uniforms-bootstrap5';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -37,14 +42,14 @@ const SignIn = () => {
   // console.log('render', error, redirect);
   // if correct authentication, redirect to page instead of login screen
   if (redirect) {
-    return (<Navigate to="/" />);
+    return <Navigate to="/home" />;
   }
   // Otherwise return the Login form.
   return (
     <Container id="signin-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+          <AutoForm schema={bridge} onSubmit={(data) => submit(data)}>
             <Card className="card-footer">
               <Card.Header>
                 <Col className="text-center">
@@ -52,8 +57,17 @@ const SignIn = () => {
                 </Col>
               </Card.Header>
               <Card.Body>
-                <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
-                <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
+                <TextField
+                  id="signin-form-email"
+                  name="email"
+                  placeholder="E-mail address"
+                />
+                <TextField
+                  id="signin-form-password"
+                  name="password"
+                  placeholder="Password"
+                  type="password"
+                />
                 <ErrorsField />
                 <Col className="text-center">
                   <SubmitField id="signin-form-submit" />

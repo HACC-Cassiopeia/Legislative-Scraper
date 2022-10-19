@@ -8,6 +8,7 @@ import {
   Routes,
   Navigate,
 } from 'react-router-dom';
+import Home from '../pages/Home';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
@@ -18,8 +19,6 @@ import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
 import SignIn from '../pages/SignIn';
 import Dashboard from '../pages/Dashboard';
-// import Footer from '../components/Footer';
-import NavBar from '../components/NavBar';
 import NotAuthorized from '../pages/NotAuthorized';
 import BillResolutionTracker from '../pages/BillResolutionTracker';
 import AddTestimony from '../pages/AddTestimony';
@@ -28,7 +27,6 @@ import AddTestimony from '../pages/AddTestimony';
 const App = () => (
   <Router>
     <div className="d-flex flex-column min-vh-100">
-      <NavBar />
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/signin" element={<SignIn />} />
@@ -41,7 +39,7 @@ const App = () => (
           path="/home"
           element={(
             <ProtectedRoute>
-              <Landing />
+              <Home />
             </ProtectedRoute>
           )}
         />
