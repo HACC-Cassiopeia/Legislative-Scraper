@@ -25,6 +25,37 @@ h2 {
   --bs-alert-bg: var(--matr-navbar-bg);
 }
 
+/* Custom styles for the dashboard page */
+#dashboard-screen {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+#dashboard-sideMenu {
+  max-width: 15%;
+  border-right-color: black;
+  border-right-style: solid;
+}
+
+#dashboard-sideMenu hr {
+  border-top: 2px solid black;
+}
+
+#dashboard-sideMenu Button {
+  color: black;
+}
+
+#dashboard-filter {
+}
+
+#dashboard-list thead{
+  position: sticky;
+  top: 0;
+  margin: 0 0 0 0;
+  background-color: white;
+}
+
 /* Define custom styles */
 .gray-background {
   background-color: var(--matr-navbar-bg);
