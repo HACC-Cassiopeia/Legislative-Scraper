@@ -73,3 +73,16 @@ h2 {
   background-size: cover;
   min-height: 35vh;
 }
+
+#billTitle {
+  background-color: #ddf3dd;
+}
+
+#billStatus {
+  background-color: #f5f5f5;
+}
+
+.fakeLink4Rob {
+  color: #6f5cf3;
+  text-decoration-line: underline;
+}
