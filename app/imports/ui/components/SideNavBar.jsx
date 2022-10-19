@@ -47,19 +47,20 @@ const SideNavBar = () => {
     return (
       <Nav
         style={sideBarStyle}
-        activeKey='/home'
-        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
+        activeKey="/home"
+        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+      >
         <Nav.Item>
-          <Nav.Link href='#' style={{ color: 'black' }}>
+          <Nav.Link href="#" style={{ color: 'black' }}>
             <Icon.Inbox /> <b>INBOX </b>
           </Nav.Link>
-          <Nav.Link to='/home' style={{ color: 'black' }}>
+          <Nav.Link href="/home" style={{ color: 'black' }}>
             <Icon.HouseDoor /> <b>HOME</b>
           </Nav.Link>
-          <Nav.Link href='#' style={{ color: 'black' }}>
+          <Nav.Link href="#" style={{ color: 'black' }}>
             <Icon.Calendar /> <b>CALENDAR</b>
           </Nav.Link>
-          <Nav.Link href='#' style={{ color: 'black' }}>
+          <Nav.Link href="/dashboard" style={{ color: 'black' }}>
             <Icon.Clipboard /> <b>DASHBOARD</b>
           </Nav.Link>
           <Nav.Link>
@@ -70,7 +71,7 @@ const SideNavBar = () => {
             </Button>
           </Nav.Link>
           <Nav.Link>
-            <Button as={NavLink} to='/signout'>
+            <Button as={NavLink} to="/signout">
               <b>
                 <Icon.BoxArrowLeft /> SIGN OUT
               </b>
@@ -83,19 +84,20 @@ const SideNavBar = () => {
   return (
     <Nav
       style={mobileSideBarStyle}
-      activeKey='/home'
-      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
+      activeKey="/home"
+      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+    >
       <Nav.Item>
-        <Nav.Link href='#' style={{ color: 'black' }}>
+        <Nav.Link href="#" style={{ color: 'black' }}>
           <Icon.Inbox />
         </Nav.Link>
-        <Nav.Link to='/home' style={{ color: 'black' }}>
+        <Nav.Link to="/home" style={{ color: 'black' }}>
           <Icon.HouseDoor />
         </Nav.Link>
-        <Nav.Link href='#' style={{ color: 'black' }}>
+        <Nav.Link href="#" style={{ color: 'black' }}>
           <Icon.Calendar />
         </Nav.Link>
-        <Nav.Link href='#' style={{ color: 'black' }}>
+        <Nav.Link href="#" style={{ color: 'black' }}>
           <Icon.Clipboard />
         </Nav.Link>
         <Nav.Link>
@@ -104,7 +106,7 @@ const SideNavBar = () => {
           </Button>
         </Nav.Link>
         <Nav.Link>
-          <Button as={NavLink} to='/signout'>
+          <Button as={NavLink} to="/signout">
             <b>
               <Icon.BoxArrowLeft />
             </b>
