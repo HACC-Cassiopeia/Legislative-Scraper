@@ -11,11 +11,17 @@
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
 
-  "testimoniesData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  "testimonies": [
+    {
+      "committeeChair": "Some name",
+      "committeeName": "LAT",
+      "billNumber": "HB1078 HD1",
+      "draftNumber": "HB1078 HD2",
+      "hearingDate": "2022/10/14",
+      "location": "Some location",
+      "position": "Some position",
+      "introduction": "Some introduction"
+    }
   ],
 
   "fakeData": [

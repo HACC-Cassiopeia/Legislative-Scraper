@@ -13,12 +13,12 @@ class TestimonyCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      cmte_chair: String,
-      cmte_name: String,
-      bill: Number,
-      draft: Number,
-      date: Date,
-      location: String,
+      committeeChair: String,
+      committeeName: String,
+      billNumber: String,
+      draftNumber: String,
+      hearingDate: Date,
+      hearingLocation: String,
       position: String,
       introduction: String,
     }, { tracker: Tracker });
