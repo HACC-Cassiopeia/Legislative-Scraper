@@ -1,16 +1,9 @@
 import React from 'react';
-import {
-  Col,
-  Container,
-  Image,
-  Row,
-  Nav,
-  Navbar,
-  Button,
-} from 'react-bootstrap';
+import { Col, Container, Image, Row, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
 import SignUpModal from '../components/SignUpModal';
+import SignInModal from '../components/SignInModal';
 
 const landingStyleA = {
   backgroudnColor: 'whitesmoke',
@@ -48,9 +41,7 @@ const Landing = () => (
             <h2>Legislative Tracker</h2>
           </Navbar.Brand>
           <Nav className='justify-content-end'>
-            <Button variant='primary' as={NavLink} to='/signin'>
-              Log In
-            </Button>
+            <SignInModal />
             &nbsp;
             <SignUpModal />
           </Nav>

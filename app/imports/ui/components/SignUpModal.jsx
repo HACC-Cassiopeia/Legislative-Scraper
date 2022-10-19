@@ -53,7 +53,7 @@ const SignUpModal = ({ location }) => {
     <>
       <Button variant='primary' onClick={handleShow}>
         <b>
-          <Icon.PersonCheck /> <b>Sign Up</b>
+          <Icon.PersonPlus /> <b>Sign Up</b>
         </b>
       </Button>
       <AutoForm schema={bridge} onSubmit={(data) => submit(data)}>
