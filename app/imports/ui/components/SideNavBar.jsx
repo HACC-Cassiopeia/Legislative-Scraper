@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
+import { NavLink } from 'react-router-dom';
 import { Nav, Button } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 import './style/Component.css';
@@ -46,25 +47,33 @@ const SideNavBar = () => {
     return (
       <Nav
         style={sideBarStyle}
-        activeKey="/home"
-        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
-      >
+        activeKey='/home'
+        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
         <Nav.Item>
-          <Nav.Link href="#" style={{ color: 'black' }}>
+          <Nav.Link href='#' style={{ color: 'black' }}>
             <Icon.Inbox /> <b>INBOX </b>
           </Nav.Link>
-          <Nav.Link to="/home" style={{ color: 'black' }}>
+          <Nav.Link to='/home' style={{ color: 'black' }}>
             <Icon.HouseDoor /> <b>HOME</b>
           </Nav.Link>
-          <Nav.Link href="#" style={{ color: 'black' }}>
+          <Nav.Link href='#' style={{ color: 'black' }}>
             <Icon.Calendar /> <b>CALENDAR</b>
           </Nav.Link>
-          <Nav.Link href="#" style={{ color: 'black' }}>
+          <Nav.Link href='#' style={{ color: 'black' }}>
             <Icon.Clipboard /> <b>DASHBOARD</b>
           </Nav.Link>
           <Nav.Link>
             <Button>
-              <Icon.PencilSquare /> <b>CREATE </b>
+              <b>
+                <Icon.PencilSquare /> &nbsp; CREATE
+              </b>
+            </Button>
+          </Nav.Link>
+          <Nav.Link>
+            <Button as={NavLink} to='/signout'>
+              <b>
+                <Icon.BoxArrowLeft /> SIGN OUT
+              </b>
             </Button>
           </Nav.Link>
         </Nav.Item>
@@ -74,25 +83,31 @@ const SideNavBar = () => {
   return (
     <Nav
       style={mobileSideBarStyle}
-      activeKey="/home"
-      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
-    >
+      activeKey='/home'
+      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
       <Nav.Item>
-        <Nav.Link href="#" style={{ color: 'black' }}>
+        <Nav.Link href='#' style={{ color: 'black' }}>
           <Icon.Inbox />
         </Nav.Link>
-        <Nav.Link to="/home" style={{ color: 'black' }}>
+        <Nav.Link to='/home' style={{ color: 'black' }}>
           <Icon.HouseDoor />
         </Nav.Link>
-        <Nav.Link href="#" style={{ color: 'black' }}>
+        <Nav.Link href='#' style={{ color: 'black' }}>
           <Icon.Calendar />
         </Nav.Link>
-        <Nav.Link href="#" style={{ color: 'black' }}>
+        <Nav.Link href='#' style={{ color: 'black' }}>
           <Icon.Clipboard />
         </Nav.Link>
         <Nav.Link>
           <Button>
             <Icon.PencilSquare />
+          </Button>
+        </Nav.Link>
+        <Nav.Link>
+          <Button as={NavLink} to='/signout'>
+            <b>
+              <Icon.BoxArrowLeft />
+            </b>
           </Button>
         </Nav.Link>
       </Nav.Item>
