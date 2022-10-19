@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Table, Button, Accordion, Dropdown, DropdownButton } from 'react-bootstrap';
-/* import { useTracker } from 'meteor/react-meteor-data';
-import { FakeDataCollection } from '/imports/api/fakeData/FakeData'; */
+// import { useTracker } from 'meteor/react-meteor-data';
+// import { FakeData } from '../../api/fakeData/FakeData';
 
 const Dashboard = () => {
   /* states for item filtering */
@@ -10,28 +10,35 @@ const Dashboard = () => {
   const [status, setStatus] = useState('Select an Action');
 
   /* importing fake database info */
-  /* const bills = useTracker(() => FakeDataCollection.find().fetch()); */
+  /*
+  const { bills } = useTracker(() => {
+    const billItems = FakeData.collection.find({}).fetch();
+    return {
+      bills: billItems,
+    };
+  }, []);
+  */
 
   /* format info from the db */
   /*
-  const createBillData = () => {
-    const data = bills.map(bill => (
-      <tr>
-        <td>{bill.billNumber}</td>
-        <td>Description here</td>
-        <td>Fun office name</td>
-        <td>Action type</td>
-        <td>Committee name</td>
-        <td>01/01/2001</td>
-        <td>Hearing</td>
-        <td>Comments</td>
-        <td>Name</td>
-        <td>Approval needed</td>
-      </tr>
-    ));
-
-    return data;
-  };
+  const createBillData = () => (
+    <tbody>
+      {bills.map((bill) => (
+        <tr key={bill.billNumber}>
+          <td>{bill.billNumber}</td>
+          <td>Description here</td>
+          <td>Fun office name</td>
+          <td>Action type</td>
+          <td>Committee name</td>
+          <td>01/01/2001</td>
+          <td>Hearing</td>
+          <td>Comments</td>
+          <td>Name</td>
+          <td>Approval needed</td>
+        </tr>
+      ))}
+    </tbody>
+  );
   */
 
   /* temporary function to create fake data */
@@ -53,7 +60,11 @@ const Dashboard = () => {
         </tr>,
       );
     }
-    return data;
+    return (
+      <tbody>
+        {data}
+      </tbody>
+    );
   };
 
   const returnSideMenu = () => (
@@ -72,7 +83,7 @@ const Dashboard = () => {
   const returnFilter = () => (
     <Container className="pb-3">
       <h2>Legislative Tracking System 2022</h2>
-      <Accordion defaultActiveKey="0">
+      <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Filter Options</Accordion.Header>
           <Accordion.Body>
@@ -157,9 +168,7 @@ const Dashboard = () => {
             <th>Status</th>
           </tr>
         </thead>
-        <tbody>
-          {createFakeData()}
-        </tbody>
+        {createFakeData()}
       </Table>
     </div>
   );
