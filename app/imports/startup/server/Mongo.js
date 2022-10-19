@@ -52,8 +52,8 @@ if (Measures.collection.find().count() === 0) {
 
 // Initialize the TestimoniesCollection if empty.
 if (Testimonies.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
+  if (Meteor.settings.testimoniest) {
     console.log('Creating default testimony data.');
-    Meteor.settings.defaultData.forEach(data => addTestimoniesData(data));
+    Meteor.settings.testimonies.forEach(data => addTestimoniesData(data));
   }
 }
