@@ -43,11 +43,9 @@ const SignUpModal = ({ location }) => {
     });
   };
 
-  /* Display the signup form. Redirect to add page after successful registration and login. */
-  const { from } = location?.state || { from: { pathname: '/add' } };
   // if correct authentication, redirect to from: page instead of signup screen
   if (redirectToReferer) {
-    return <Navigate to={from} />;
+    return <Navigate to='/home' />;
   }
   return (
     <>
@@ -56,11 +54,12 @@ const SignUpModal = ({ location }) => {
           <Icon.PersonPlus /> <b>Sign Up</b>
         </b>
       </Button>
-      <AutoForm schema={bridge} onSubmit={(data) => submit(data)}>
-        <Modal show={show} onHide={handleClose}>
+
+      <Modal show={show} onHide={handleClose}>
+        <AutoForm schema={bridge} onSubmit={(data) => submit(data)}>
           <Modal.Header closeButton>
             <Modal.Title>
-              <h3>Register your account</h3>
+              <h3 style={{ textAlign: 'center' }}>Register your account</h3>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -85,8 +84,8 @@ const SignUpModal = ({ location }) => {
               {error}
             </Alert>
           )}
-        </Modal>
-      </AutoForm>
+        </AutoForm>
+      </Modal>
     </>
   );
 };

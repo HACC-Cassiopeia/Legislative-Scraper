@@ -58,11 +58,11 @@ const SignInModal = () => {
           <Icon.PersonCheck /> <b>Sign In</b>
         </b>
       </Button>
-      <AutoForm schema={bridge} onSubmit={(data) => submit(data)}>
-        <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
+        <AutoForm schema={bridge} onSubmit={(data) => submit(data)}>
           <Modal.Header closeButton>
             <Modal.Title>
-              <h3>Login to your account</h3>
+              <h3 style={{ textAlign: 'center' }}>Login to your account</h3>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -88,6 +88,7 @@ const SignInModal = () => {
               <Link to='/signup'>Sign Up</Link>
             </div>
           </Modal.Footer>
+
           {error === '' ? (
             ''
           ) : (
@@ -96,8 +97,8 @@ const SignInModal = () => {
               {error}
             </Alert>
           )}
-        </Modal>
-      </AutoForm>
+        </AutoForm>
+      </Modal>
     </>
   );
 };
