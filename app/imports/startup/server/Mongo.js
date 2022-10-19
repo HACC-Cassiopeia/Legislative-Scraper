@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { FakeData } from '../../api/fakeData/FakeData.js';
 import { Measures } from '../../api/measures/Measures.js';
-import { Testimonies } from '../../api/testimony/Testimony';
+import { Testimonies } from '../../api/testimony/Testimony.js';
 
 /* eslint-disable no-console */
 // Initialize the database with a default data document.
@@ -24,7 +24,7 @@ const addMeasures = (measure) => {
 
 // Initialize the database with a default testimonies.
 const addTestimoniesData = (testimony) => {
-  // console.log(`Adding: ${testimony.}`);
+  console.log(`Adding: ${testimony.committeeName}`);
   Testimonies.collection.insert(testimony);
 };
 

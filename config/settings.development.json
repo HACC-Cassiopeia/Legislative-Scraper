@@ -14,11 +14,11 @@
   "testimonies": [
     {
       "committeeChair": "Some name",
-      "committeeName": "LAT",
-      "billNumber": "HB1078 HD1",
-      "draftNumber": "HB1078 HD2",
+      "committeeName": "Some comittee",
+      "billNumber": "HB1078",
+      "draftNumber": "HB107",
       "hearingDate": "2022/10/14",
-      "location": "Some location",
+      "hearingLocation": "Some location",
       "position": "Some position",
       "introduction": "Some introduction"
     }
