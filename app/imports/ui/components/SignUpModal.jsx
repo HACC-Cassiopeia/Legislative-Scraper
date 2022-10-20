@@ -16,7 +16,7 @@ import {
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
  */
-const SignUpModal = ({ location }) => {
+const SignUpModal = () => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
   const [show, setShow] = useState(false);
