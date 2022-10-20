@@ -9,7 +9,7 @@ import {
   DropdownButton,
 } from 'react-bootstrap';
 // import { useTracker } from 'meteor/react-meteor-data';
-// import { Measures } from '../../api/measures/Measures';
+// import { SavedMeasures } from '../../api/measures/SavedMeasures';
 import SideNavBar from '../components/SideNavBar';
 
 const Dashboard = () => {
@@ -21,7 +21,7 @@ const Dashboard = () => {
   /* importing fake database info */
   /*
   const { bills } = useTracker(() => {
-    const billItems = Measures.collection.find({}).fetch();
+    const billItems = SavedMeasures.collection.find({}).fetch();
     return {
       bills: billItems,
     };

@@ -1,23 +1,23 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
-import { Measures } from '../../api/measures/Measures.js';
+import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures.js';
 import { Testimonies } from '../../api/testimony/Testimony.js';
 
 /* eslint-disable no-console */
 // Initialize the database with a default data document.
 const addData = (data) => {
-  console.log(`Adding: ${data.name} (${data.owner})`);
+  console.log(`  Adding: ${data.name} (${data.owner})`);
   Stuffs.collection.insert(data);
 };
 
 const addMeasures = (measure) => {
-  console.log(`Adding: ${measure.code}`);
-  Measures.collection.insert(measure);
+  console.log(`  Adding: ${measure.code}`);
+  SavedMeasures.collection.insert(measure);
 };
 
 // Initialize the database with a default testimonies.
 const addTestimoniesData = (testimony) => {
-  console.log(`Adding: ${testimony.committeeName}`);
+  console.log(`  Adding: ${testimony.committeeName}`);
   Testimonies.collection.insert(testimony);
 };
 
@@ -29,11 +29,11 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
-// Initialization of test Measures
-if (Measures.collection.find().count() === 0) {
-  if (Meteor.settings.measures) {
+// Initialization of test SavedMeasures
+if (SavedMeasures.collection.find().count() === 0) {
+  if (Meteor.settings.defaultSavedMeasures) {
     console.log('Creating measures database');
-    Meteor.settings.measures.forEach(measure => addMeasures(measure));
+    Meteor.settings.defaultSavedMeasures.forEach(measure => addMeasures(measure));
   }
 }
 

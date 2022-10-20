@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Stuffs } from '../../api/stuff/Stuff';
-import { Measures } from '../../api/measures/Measures';
+import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
 import StuffItem from '../components/StuffItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -15,13 +15,13 @@ const ListStuff = () => {
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
     const subscription = Meteor.subscribe(Stuffs.userPublicationName);
-    const subscription2 = Meteor.subscribe(Measures.userPublicationName);
+    const subscription2 = Meteor.subscribe(SavedMeasures.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     const rdy2 = subscription2.ready();
     // Get the Stuff documents
     const stuffItems = Stuffs.collection.find({}).fetch();
-    const measureItems = Measures.collection.find({}).fetch();
+    const measureItems = SavedMeasures.collection.find({}).fetch();
     return {
       stuffs: stuffItems,
       measures: measureItems,

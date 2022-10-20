@@ -56,7 +56,6 @@ if (ScraperData.collection.find().count() === 0) {
 
         if (`${code}`.length !== 0) {
           // eslint-disable-next-line no-console
-          console.log(`Adding ${code}`);
           ScraperData.collection.insert({
             code: `${code}`,
             measurePdfUrl: `${measurePdfUrl}`,
@@ -77,4 +76,4 @@ if (ScraperData.collection.find().count() === 0) {
     }).catch((error) => console.log('Failed', console.log(error)));
 }
 
-console.log(ScraperData.collection.find().count());
+console.log(`total scraped measures: ${ScraperData.collection.find().count()}`);
