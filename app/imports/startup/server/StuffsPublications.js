@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Stuffs } from '../../api/stuff/Stuff';
-import { Measures } from '../../api/measures/Measures';
+import { Stuffs } from '../../api/stuff/Stuff.js';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -18,14 +17,6 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 Meteor.publish(Stuffs.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Stuffs.collection.find();
-  }
-  return this.ready();
-});
-
-// Measures publication
-Meteor.publish(Measures.userPublicationName, function () {
-  if (this.userId) {
-    return Measures.collection.find();
   }
   return this.ready();
 });
