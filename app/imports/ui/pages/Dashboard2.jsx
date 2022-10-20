@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Accordion, Col, Container, Dropdown, DropdownButton, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Measures } from '../../api/measures/Measures';
+import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
 import DashboardBill from '../components/DashboardBill';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SideNavBar from '../components/SideNavBar';
@@ -18,11 +18,11 @@ const Dashboard = () => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Measures.userPublicationName);
+    const subscription = Meteor.subscribe(SavedMeasures.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const billItems = Measures.collection.find({}).fetch();
+    const billItems = SavedMeasures.collection.find({}).fetch();
     return {
       bills: billItems,
       ready: rdy,

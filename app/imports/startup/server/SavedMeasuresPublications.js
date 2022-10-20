@@ -4,10 +4,7 @@ import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
 
 // SavedMeasures publication
 Meteor.publish(SavedMeasures.userPublicationName, function () {
-  if (this.userId) {
-    return SavedMeasures.collection.find();
-  }
-  return this.ready();
+  return SavedMeasures.collection.find();
 });
 
 // alanning:roles publication
