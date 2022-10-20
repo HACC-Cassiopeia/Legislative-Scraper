@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { Meteor } from 'meteor/meteor';
 // import { useTracker } from 'meteor/react-meteor-data';
-import { NavLink } from 'react-router-dom';
 import { Nav, Button } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 import SignoutCheck from './SignoutCheck';
