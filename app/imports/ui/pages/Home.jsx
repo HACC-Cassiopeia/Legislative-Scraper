@@ -1,4 +1,6 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Card, Row, Col, Button, Container } from 'react-bootstrap';
 import SideNavBar from '../components/SideNavBar';
 
@@ -7,6 +9,13 @@ const Home = () => {
     marginLeft: '25%',
     maxWidth: '65vw',
   };
+
+  const { currentUser } = useTracker(
+    () => ({
+      currentUser: Meteor.user() ? Meteor.user().username : '',
+    }),
+    [],
+  );
 
   return (
     <div>
@@ -28,7 +37,7 @@ const Home = () => {
                 <Card.Header>PROFILE</Card.Header>
                 <Card.Body>
                   <Card.Title>Name:</Card.Title>
-                  <Card.Subtitle>Email:</Card.Subtitle>
+                  <Card.Subtitle>Email: </Card.Subtitle>
                   <Card.Text>
                     <div style={{ textAlign: 'center' }}>
                       <b>Role</b>
