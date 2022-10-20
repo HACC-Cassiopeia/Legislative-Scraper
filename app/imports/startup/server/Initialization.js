@@ -44,10 +44,3 @@ if (Testimonies.collection.find().count() === 0) {
     Meteor.settings.testimonies.forEach(data => addTestimoniesData(data));
   }
 }
-
-if (FakeData.collection.find().count() === 0) {
-  if (Meteor.settings.fakeData) {
-    console.log('Creating default data.');
-    Meteor.settings.fakeData.forEach(data => addFakeData(data));
-  }
-}

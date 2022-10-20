@@ -4,10 +4,7 @@ import { Measures } from '../../api/measures/Measures';
 
 // Measures publication
 Meteor.publish(Measures.userPublicationName, function () {
-  if (this.userId) {
-    return Measures.collection.find();
-  }
-  return this.ready();
+  return Measures.collection.find();
 });
 
 // alanning:roles publication

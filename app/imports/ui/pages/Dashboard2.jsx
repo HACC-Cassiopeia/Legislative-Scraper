@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Accordion, Col, Container, Dropdown, DropdownButton, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { FakeData } from '../../api/fakeData/FakeData';
+import { Measures } from '../../api/measures/Measures';
 import DashboardBill from '../components/DashboardBill';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SideNavBar from '../components/SideNavBar';
@@ -18,11 +18,11 @@ const Dashboard = () => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(FakeData.userPublicationName);
+    const subscription = Meteor.subscribe(Measures.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const billItems = FakeData.collection.find({}).fetch();
+    const billItems = Measures.collection.find({}).fetch();
     return {
       bills: billItems,
       ready: rdy,
@@ -126,16 +126,12 @@ const Dashboard = () => {
         <Table striped>
           <thead>
             <tr>
-              <th>Bill #</th>
-              <th>Bill / Resolution</th>
-              <th>Office</th>
-              <th>Action</th>
-              <th>Committee</th>
-              <th>Hearing Date</th>
-              <th>Hearing Type</th>
-              <th>DOE Position</th>
-              <th>Testifier</th>
-              <th>Status</th>
+              <td>Code</td>
+              <td>Measure Title</td>
+              <td>Report</td>
+              <td>Hour</td>
+              <td>Date</td>
+              <td>Introducer</td>
             </tr>
           </thead>
           <tbody>

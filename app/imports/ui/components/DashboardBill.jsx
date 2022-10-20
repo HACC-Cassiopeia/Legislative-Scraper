@@ -5,16 +5,12 @@ import { Link } from 'react-router-dom';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const DashboardBill = ({ bill }) => (
   <tr>
-    <td>{bill.billNumber}</td>
-    <td>Description here</td>
-    <td>Fun office name</td>
-    <td>{bill.actionNeeded}</td>
-    <td>Committee name</td>
-    <td>{bill.hearingDate}</td>
-    <td>{bill.hearingType}</td>
-    <td>{bill.doePosition}</td>
-    <td>Name</td>
-    <td>{bill.status}</td>
+    <td>{bill.code}</td>
+    <td>{bill.measureTitle}</td>
+    <td>{bill.reportTitle}</td>
+    <td>{bill.statusHorS}</td>
+    <td>{bill.statusDate}</td>
+    <td>{bill.introducer}</td>
     <td>
       <Link to={`/information/${bill._id}`}>Read bill</Link>
     </td>
@@ -24,12 +20,18 @@ const DashboardBill = ({ bill }) => (
 // Require a document to be passed to this component.
 DashboardBill.propTypes = {
   bill: PropTypes.shape({
-    billNumber: PropTypes.string,
-    actionNeeded: PropTypes.string,
-    hearingDate: PropTypes.string,
-    hearingType: PropTypes.string,
-    doePosition: PropTypes.string,
-    status: PropTypes.string,
+    code: PropTypes.string,
+    measurePdfUrl: PropTypes.string,
+    measureArchiveUrl: PropTypes.string,
+    measureTitle: PropTypes.string,
+    reportTitle: PropTypes.string,
+    description: PropTypes.string,
+    statusHorS: PropTypes.string,
+    statusDescription: PropTypes.string,
+    statusDate: PropTypes.string,
+    introducer: PropTypes.string,
+    currentReferral: PropTypes.string,
+    companion: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
