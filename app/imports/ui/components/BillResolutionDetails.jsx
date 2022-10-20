@@ -413,6 +413,8 @@ const BillResolutionDetails = () => (
           'Hawaii public schools along with University of Hawaii ' +
           'undergraduate students plant trees.';
       const splitPurpose = doc.splitTextToSize(billPurpose, 165);
+
+      // TODO fix rendering special chars (ā will not render in Helvetica - need to add a custom font)
       const departmentPosition = 'The Hawaii State Department of Education (Department) offers the following comments ' +
           'on HB 410 regarding specific grade level mandate for tree planting.\n\n' +
           'The Department agrees that educational endeavors around environmental protection, ' +
@@ -479,6 +481,8 @@ const BillResolutionDetails = () => (
       doc.text(billTitle, margins + 41, 125);
       doc.text(splitPurpose, margins + 41, 135);
       doc.text(splitPosition, margins, 160);
+
+      // TODO add more pages if testimony is too long for one page
 
       doc.save(fileName);
     }}
