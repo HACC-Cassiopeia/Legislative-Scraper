@@ -353,24 +353,67 @@ const BillResolutionDetails = () => (
             <div className="fakeLink4Rob"><FilePdfFill /> SB3096-SD1_EDN_03-22-22_EDN_Support.pdf</div>
             <Button onClick={() => {
               // eslint-disable-next-line new-cap
-              const doc = new jsPDF();
+              const doc = new jsPDF('portrait', 'mm', 'letter');
+              const midPage = (doc.internal.pageSize.width / 2);
 
+              // TODO all variables should be loaded from db
+              // test = testimony
+              const governorName = 'DAVID Y. IGE';
+              const superTitle = 'SUPERINTENDENT'; // could also be 'INTERIM SUPERINTENDENT'
+              const superName = 'DR. CHRISTINA M. KISHIMOTO';
+              const testDate = '02/09/2021';
+              const testTime = '09:00 AM';
+              const testLocation = '325 Via Videoconference';
+              const testCommittee = 'House Energy & Environmental Protection';
+              let testCommitteeFormatted;
+
+              // to wrap committee title if long
+              if (testCommittee.length > 20) {
+                for (let i = 20; i > 0; i--) {
+                  if (testCommittee[i] === ' ') {
+                    testCommitteeFormatted = `${testCommittee.substring(0, i)}\n${testCommittee.substring(i + 1)}`;
+                    break;
+                  }
+                }
+              } else {
+                testCommitteeFormatted = testCommittee;
+              }
+
+              // TODO figure out naming convention for testimonies
+              const fileName = 'Test Testimony.pdf';
+
+              // TODO fix alignment for governor and superintendent so when names change everything still looks good
+              // HEADER
+              doc.setFontSize(6);
+              doc.setFont('helvetica', 'bold');
+              doc.text(governorName, 15, 35);
+              doc.text(superName, midPage * 2 - 15, 35, { align: 'right' });
+              doc.setFont('helvetica', 'normal');
+              doc.text('GOVERNOR', 15.5, 38);
+              doc.text(superTitle, midPage * 2 - 20, 38, { align: 'right' });
+              doc.addImage('/images/hawaii-state-seal.gif', 'gif', midPage - 11, 24, 22, 22);
               doc.setFontSize(8);
               doc.setFont('helvetica', 'bold');
-              doc.text('DAVID Y. IGE', 20, 35);
-              doc.text('       KEITH T. HAYASHI', 160, 35);
+              doc.text('STATE OF HAWAI\'I', midPage, 52, { align: 'center' });
+              doc.text('DEPARTMENT OF EDUCATION', midPage, 55.5, { align: 'center' });
               doc.setFont('helvetica', 'normal');
-              doc.text(' GOVERNER', 20, 38);
-              doc.text('INTERIM SUPERINTENDENT', 160, 38);
-              doc.addImage('/images/hawaii-state-seal.gif', 'gif', 91, 22, 26, 26);
-              doc.setFontSize(10);
+              doc.text('P.O. BOX 2360', midPage, 59, { align: 'center' });
+              doc.text('HONOLULU, HAWAI\'I 96804', midPage, 62.5, { align: 'center' });
+
+              // TESTIMONY INFO
+              doc.setFontSize(12);
               doc.setFont('helvetica', 'bold');
-              doc.text('STATE OF HAWAI\'I', 88, 58, null, null, 'center');
-              doc.text('DEPARTMENT OF EDUCATION', 78, 62, null, null, 'center');
+              doc.text('Date:', midPage, 74);
+              doc.text('Time:', midPage, 79);
+              doc.text('Location:', midPage, 84);
+              doc.text('Committee:', midPage, 89);
               doc.setFont('helvetica', 'normal');
-              doc.text('P.O. BOX 2360', 92, 66, null, null, 'center');
-              doc.text('HONOLULU, HAWAI\'I 96804', 82, 70, null, null, 'center');
-              doc.save('myPDF.pdf');
+              doc.text(testDate, midPage + 12, 74);
+              doc.text(testTime, midPage + 13, 79);
+              doc.text(testLocation, midPage + 20.5, 84);
+              doc.text(`                     ${testCommitteeFormatted}`, midPage, 89); // to get spacing on second line
+
+              doc.save(fileName);
             }}
             >
               Click Me
