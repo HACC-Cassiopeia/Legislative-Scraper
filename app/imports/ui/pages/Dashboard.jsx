@@ -7,6 +7,7 @@ import {
   Accordion,
   Dropdown,
   DropdownButton,
+  Button,
 } from 'react-bootstrap';
 // import { useTracker } from 'meteor/react-meteor-data';
 // import { Measures } from '../../api/measures/Measures';
@@ -14,9 +15,20 @@ import SideNavBar from '../components/SideNavBar';
 
 const Dashboard = () => {
   /* states for item filtering */
-  const [office, setOffice] = useState('Select an Office');
-  const [action, setAction] = useState('Select a Status');
-  const [status, setStatus] = useState('Select an Action');
+  const [office, setOffice] = useState('');
+  const [action, setAction] = useState('');
+  const [status, setStatus] = useState('');
+  const [billNum, setBillNum] = useState('');
+  const [editDate, setEditDate] = useState('');
+  const [hearingDate, setHearingDate] = useState('');
+  const [title, setTitle] = useState('');
+
+  /* logic for filter options */
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    alert(`Pressed Submit! \n Office param: ${office} \n Action param: ${action} \n Status param: ${status} \n Bill Number param: ${billNum} \n Edit Date param: ${editDate} \n Hearing Date param: ${hearingDate} \n Title param: ${title}`);
+  };
 
   /* importing fake database info */
   /*
@@ -71,6 +83,7 @@ const Dashboard = () => {
     }
     return <tbody>{data}</tbody>;
   };
+
   /**
   const returnSideMenu = () => (
     <Row>
@@ -102,25 +115,41 @@ const Dashboard = () => {
               <Col>
                 Bill # <br />
                 <label htmlFor="Search by Bill #">
-                  <input type="text" placeholder="Enter bill # here" />
+                  <input
+                    type="text"
+                    placeholder="Enter bill # here"
+                    onChange={e => setBillNum(e.target.value)}
+                  />
                 </label>
               </Col>
               <Col>
                 Edit Date <br />
                 <label htmlFor="Search by edit date">
-                  <input type="text" placeholder="Enter date here" />
+                  <input
+                    type="text"
+                    placeholder="Enter date here"
+                    onChange={e => setEditDate(e.target.value)}
+                  />
                 </label>
               </Col>
               <Col>
                 Sort by Hearing Date <br />
                 <label htmlFor="Search by hearing date">
-                  <input type="text" placeholder="Enter date here" />
+                  <input
+                    type="text"
+                    placeholder="Enter date here"
+                    onChange={e => setHearingDate(e.target.value)}
+                  />
                 </label>
               </Col>
               <Col>
                 Title <br />
                 <label htmlFor="Search by title">
-                  <input type="text" placeholder="Enter title here" />
+                  <input
+                    type="text"
+                    placeholder="Enter title here"
+                    onChange={e => setTitle(e.target.value)}
+                  />
                 </label>
               </Col>
             </Row>
@@ -129,7 +158,8 @@ const Dashboard = () => {
                 Office <br />
                 <DropdownButton
                   id="dropdown-basic-button"
-                  title={office}
+                  variant="secondary"
+                  title={office === '' ? 'Select an Office' : office}
                   onSelect={(e) => setOffice(e)}
                 >
                   <Dropdown.Item eventKey="OCID">OCID</Dropdown.Item>
@@ -146,7 +176,8 @@ const Dashboard = () => {
                 Status <br />
                 <DropdownButton
                   id="dropdown-basic-button"
-                  title={action}
+                  variant="secondary"
+                  title={action === '' ? 'Select an Action' : action}
                   onSelect={(e) => setAction(e)}
                 >
                   <Dropdown.Item eventKey="Action">Action</Dropdown.Item>
@@ -162,7 +193,8 @@ const Dashboard = () => {
                 Action <br />
                 <DropdownButton
                   id="dropdown-basic-button"
-                  title={status}
+                  variant="secondary"
+                  title={status === '' ? 'Select a Status' : status}
                   onSelect={(e) => setStatus(e)}
                 >
                   <Dropdown.Item eventKey="Action">Action</Dropdown.Item>
@@ -174,7 +206,12 @@ const Dashboard = () => {
                   </Dropdown.Item>
                 </DropdownButton>
               </Col>
-              <Col />
+              <Col>
+                <br />
+                <form className="task-form" onSubmit={handleSubmit}>
+                  <Button variant="primary" type="submit">Submit Filter Options</Button>
+                </form>
+              </Col>
             </Row>
           </Accordion.Body>
         </Accordion.Item>
@@ -207,8 +244,8 @@ const Dashboard = () => {
   return (
     <div>
       <SideNavBar />
-      <div id="mainBody">
-        <Row id="dashboard-screen">
+      <div id="dashboard-screen" className="pt-3">
+        <Row>
           <Col>
             <Row id="dashboard-filter">{returnFilter()}</Row>
             <Row id="dashboard-list">{returnList()}</Row>
