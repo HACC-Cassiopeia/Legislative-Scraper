@@ -1,6 +1,6 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
-import { ScraperData } from '../imports/api/scraperData/ScraperData';
+import { ScraperData } from '../../api/scraperData/ScraperData';
 
 const url = 'https://www.capitol.hawaii.gov/advreports/advreport.aspx?year=2022&report=deadline&active=true&rpt_type=&measuretype=hb';
 
