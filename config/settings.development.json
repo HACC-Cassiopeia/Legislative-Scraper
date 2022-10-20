@@ -23,58 +23,7 @@
       "introduction": "Some introduction"
     }
   ],
-
-  "fakeData": [
-    {
-      "billNumber":  "HB1078 HD1",
-      "actionNeeded": "Monitor",
-      "rationale": "This is the rationale",
-      "reportTitle": "Department of Education; Hawaii School;",
-      "measureTitle": "RELATING TO THE HAWAII SCHOOL FOR THE DEAF AND BLIND",
-      "committee": ["LAT", "FIN"],
-      "office": ["OSSS", "OSIP"],
-      "hearingDate": "02/05/2022",
-      "hearingType": "Hearing",
-      "doePosition": "Comments",
-      "status": "Deferred/Inactive",
-      "measureStatusLink": "https://www.capitol.hawaii.gov/measure_indiv.aspx?billtype=HB&billnumber=1078&year=2022",
-      "youtubeRecordingsLink": ["youtubeLink1", "youtubeLink2"],
-      "committeeReportsLink": ["linkPdf1", "linkPdf2"]
-
-    },
-    {
-      "billNumber":  "HB1070 HD1",
-      "actionNeeded": "Testimony",
-      "rationale": "This is the rationale",
-      "reportTitle": "Department of Education; Hawaii School;",
-      "measureTitle": "SECOND BILL",
-      "committee": ["LAT", "FIN"],
-      "office": ["BOE", "OSIP"],
-      "hearingDate": "02/09/2022",
-      "hearingType": "Hearing",
-      "doePosition": "Comments",
-      "status": "Active",
-      "measureStatusLink": "https://www.capitol.hawaii.gov/measure_indiv.aspx?billtype=HB&billnumber=1078&year=2022",
-      "youtubeRecordingsLink": ["youtubeLink1", "youtubeLink2"],
-      "committeeReportsLink": ["linkPdf1", "linkPdf2"]
-    },
-    {
-      "billNumber":  "HB1099 HD1",
-      "actionNeeded": "Testimony",
-      "rationale": "This is the rationale",
-      "reportTitle": "Department of Education; Hawaii School;",
-      "measureTitle": "THIRD BILL",
-      "committee": ["LAT", "FIN"],
-      "office": ["OITS", "OCID"],
-      "hearingDate": "03/11/2022",
-      "hearingType": "Hearing",
-      "doePosition": "Comments",
-      "status": "Active",
-      "measureStatusLink": "https://www.capitol.hawaii.gov/measure_indiv.aspx?billtype=HB&billnumber=1078&year=2022",
-      "youtubeRecordingsLink": ["youtubeLink1", "youtubeLink2"],
-      "committeeReportsLink": ["linkPdf1", "linkPdf2"]
-    }
-  ],
+  
   "measures": [
     {
       "bitAppropriation": 0,
