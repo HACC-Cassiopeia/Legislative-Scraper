@@ -1,10 +1,13 @@
 import { Meteor } from 'meteor/meteor';
 // import { Roles } from 'meteor/alanning:roles';
-import { Measures } from '../../api/measures/Measures';
+import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
 
-// Measures publication
-Meteor.publish(Measures.userPublicationName, function () {
-  return Measures.collection.find();
+// SavedMeasures publication
+Meteor.publish(SavedMeasures.userPublicationName, function () {
+  if (this.userId) {
+    return SavedMeasures.collection.find();
+  }
+  return this.ready();
 });
 
 // alanning:roles publication
