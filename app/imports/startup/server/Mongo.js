@@ -36,12 +36,6 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
-// Initialization of FakeDataCollection
-if (Meteor.settings.fakeData) {
-  console.log('Creating fake data database');
-  Meteor.settings.fakeData.forEach(data => addFakeData(data));
-}
-
 // Initialization of test Measures
 if (Measures.collection.find().count() === 0) {
   if (Meteor.settings.measures) {
@@ -55,5 +49,12 @@ if (Testimonies.collection.find().count() === 0) {
   if (Meteor.settings.testimonies) {
     console.log('Creating default testimony data.');
     Meteor.settings.testimonies.forEach(data => addTestimoniesData(data));
+  }
+}
+
+if (FakeData.collection.find().count() === 0) {
+  if (Meteor.settings.fakeData) {
+    console.log('Creating default data.');
+    Meteor.settings.fakeData.forEach(data => addFakeData(data));
   }
 }
