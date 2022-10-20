@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
-import { FakeData } from '../../api/fakeData/FakeData.js';
 import { Measures } from '../../api/measures/Measures.js';
 import { Testimonies } from '../../api/testimony/Testimony.js';
 
@@ -9,12 +8,6 @@ import { Testimonies } from '../../api/testimony/Testimony.js';
 const addData = (data) => {
   console.log(`Adding: ${data.name} (${data.owner})`);
   Stuffs.collection.insert(data);
-};
-
-// copied add fake data
-const addFakeData = (data) => {
-  console.log('Added fake data');
-  FakeData.collection.insert(data);
 };
 
 const addMeasures = (measure) => {
