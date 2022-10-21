@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
+import {
+  Container,
+  Row,
+  Col,
+  Table,
+  Accordion,
+  Dropdown,
+  DropdownButton,
+} from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
-import { Accordion, Col, Container, Dropdown, DropdownButton, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
-import SavedBill from '../components/SavedBill';
+import { ScraperData } from '../../api/scraperData/ScraperData';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SideNavBar from '../components/SideNavBar';
+import AllBill from '../components/AllBill';
 
-/* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-const Dashboard = () => {
+const AllDashboard = () => {
+  /* states for item filtering */
   const [office, setOffice] = useState('Select an Office');
   const [action, setAction] = useState('Select a Status');
   const [status, setStatus] = useState('Select an Action');
@@ -18,20 +26,40 @@ const Dashboard = () => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(SavedMeasures.userPublicationName);
+    const subscription = Meteor.subscribe(ScraperData.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const billItems = SavedMeasures.collection.find({}).fetch();
+    const billItems = ScraperData.collection.find({}).fetch();
     return {
       bills: billItems,
       ready: rdy,
     };
   }, []);
 
+  /**
+  const returnSideMenu = () => (
+    <Row>
+      <Col className="pt-3">
+        <Button className="py-0" variant="link">
+          Create Tracking Document
+        </Button>
+        <hr />
+        <Button className="py-0" variant="link">
+          Another option here
+        </Button>
+        <hr />
+        <Button className="py-0" variant="link">
+          Idk maybe another option here
+        </Button>
+        <hr />
+      </Col>
+    </Row>
+  ); */
+
   const returnFilter = () => (
     <Container className="pb-3">
-      <h2>Legislative Tracking System 2022</h2>
+      <h2>Legislative Tracking System 2022: All Bills</h2>
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Filter Options</Accordion.Header>
@@ -40,25 +68,25 @@ const Dashboard = () => {
               <Col>
                 Bill # <br />
                 <label htmlFor="Search by Bill #">
-                  <input type="text" placeholder="Enter bill #" />
+                  <input type="text" placeholder="Enter bill # here" />
                 </label>
               </Col>
               <Col>
                 Edit Date <br />
                 <label htmlFor="Search by edit date">
-                  <input type="text" placeholder="Enter date" />
+                  <input type="text" placeholder="Enter date here" />
                 </label>
               </Col>
               <Col>
                 Sort by Hearing Date <br />
                 <label htmlFor="Search by hearing date">
-                  <input type="text" placeholder="Enter date" />
+                  <input type="text" placeholder="Enter date here" />
                 </label>
               </Col>
               <Col>
                 Title <br />
                 <label htmlFor="Search by title">
-                  <input type="text" placeholder="Enter title" />
+                  <input type="text" placeholder="Enter title here" />
                 </label>
               </Col>
             </Row>
@@ -121,28 +149,23 @@ const Dashboard = () => {
   );
 
   const returnList = () => (
-    <Container className="py-3">
-      <div style={{ height: '100vh', overflowY: 'auto' }}>
-        <Table striped>
-          <thead>
-            <tr>
-              <td>Code</td>
-              <td>Report</td>
-              <td>Description</td>
-              <td>Office</td>
-              <td>Report</td>
-              <td>Status</td>
-              <td>Date</td>
-              <td>Introducer</td>
-            </tr>
-          </thead>
-          <tbody>
-            {bills.map((bill) => <SavedBill key={bill._id} bill={bill} />)}
-          </tbody>
-        </Table>
-      </div>
-
-    </Container>
+    <div style={{ height: '100vh', overflowY: 'auto' }}>
+      <Table striped>
+        <thead>
+          <tr>
+            <th>Save Bill?</th>
+            <th>Measure Status</th>
+            <th>Status</th>
+            <th>Introducer(s)</th>
+            <th>Current Referral</th>
+            <th>Companion</th>
+          </tr>
+        </thead>
+        <tbody>
+          { bills.map((bill) => <AllBill key={bill._id} bill={bill} />)}
+        </tbody>
+      </Table>
+    </div>
   );
 
   return (ready ? (
@@ -160,4 +183,4 @@ const Dashboard = () => {
   ) : <LoadingSpinner />);
 };
 
-export default Dashboard;
+export default AllDashboard;

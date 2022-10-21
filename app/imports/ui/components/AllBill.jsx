@@ -3,22 +3,29 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const DashboardBill = ({ bill }) => (
+const AllBill = ({ bill }) => (
   <tr>
-    <td>{bill.code}</td>
-    <td>{bill.measureTitle}</td>
-    <td>{bill.reportTitle}</td>
-    <td>{bill.statusHorS}</td>
-    <td>{bill.statusDate}</td>
-    <td>{bill.introducer}</td>
     <td>
-      <Link to={`/view/${bill.code}`}>View Details</Link>
+      <Link to={`/view/${bill.code}`}>Save</Link>
     </td>
+    <td>
+      <div style={{ fontSize: '20px' }}><strong>{bill.code}</strong></div>
+      {bill.reportTitle} <br />
+      {bill.measureTitle} <br />
+      <div style={{ fontSize: '13px' }}>{bill.description}</div>
+    </td>
+    <td>
+      ({bill.statusHorS})
+      {bill.statusDescription}
+    </td>
+    <td>{bill.introducer}</td>
+    <td>{bill.currentReferral}</td>
+    <td>{bill.companion}</td>
   </tr>
 );
 
 // Require a document to be passed to this component.
-DashboardBill.propTypes = {
+AllBill.propTypes = {
   bill: PropTypes.shape({
     code: PropTypes.string,
     measurePdfUrl: PropTypes.string,
@@ -36,4 +43,4 @@ DashboardBill.propTypes = {
   }).isRequired,
 };
 
-export default DashboardBill;
+export default AllBill;

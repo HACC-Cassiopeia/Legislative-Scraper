@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  Table,
-  Accordion,
-  Dropdown,
-  DropdownButton,
-} from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
+import { Accordion, Col, Container, Dropdown, DropdownButton, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { ScraperData } from '../../api/scraperData/ScraperData';
+import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
+import SavedBill from '../components/SavedBill';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SideNavBar from '../components/SideNavBar';
 
+/* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const Dashboard = () => {
-  /* states for item filtering */
   const [office, setOffice] = useState('Select an Office');
   const [action, setAction] = useState('Select a Status');
   const [status, setStatus] = useState('Select an Action');
@@ -25,62 +18,20 @@ const Dashboard = () => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(ScraperData.userPublicationName);
+    const subscription = Meteor.subscribe(SavedMeasures.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const billItems = ScraperData.collection.find({}).fetch();
+    const billItems = SavedMeasures.collection.find({}).fetch();
     return {
       bills: billItems,
       ready: rdy,
     };
   }, []);
 
-  /* temporary function to create fake data */
-  const createFakeData = () => {
-    const data = [];
-    for (let i = 1; i < 20; i++) {
-      data.push(
-        <tr>
-          <td>1234</td>
-          <td>Description here</td>
-          <td>Fun office name</td>
-          <td>Action type</td>
-          <td>Committee name</td>
-          <td>01/01/2001</td>
-          <td>Hearing</td>
-          <td>Comments</td>
-          <td>Name</td>
-          <td>Approval needed</td>
-        </tr>,
-      );
-    }
-    return data;
-  };
-
-  /**
-  const returnSideMenu = () => (
-    <Row>
-      <Col className="pt-3">
-        <Button className="py-0" variant="link">
-          Create Tracking Document
-        </Button>
-        <hr />
-        <Button className="py-0" variant="link">
-          Another option here
-        </Button>
-        <hr />
-        <Button className="py-0" variant="link">
-          Idk maybe another option here
-        </Button>
-        <hr />
-      </Col>
-    </Row>
-  ); */
-
   const returnFilter = () => (
     <Container className="pb-3">
-      <h2>Legislative Tracking System 2022: All Bills</h2>
+      <h2>Legislative Tracking System 2022: Saved Bills</h2>
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Filter Options</Accordion.Header>
@@ -89,25 +40,25 @@ const Dashboard = () => {
               <Col>
                 Bill # <br />
                 <label htmlFor="Search by Bill #">
-                  <input type="text" placeholder="Enter bill # here" />
+                  <input type="text" placeholder="Enter bill #" />
                 </label>
               </Col>
               <Col>
                 Edit Date <br />
                 <label htmlFor="Search by edit date">
-                  <input type="text" placeholder="Enter date here" />
+                  <input type="text" placeholder="Enter date" />
                 </label>
               </Col>
               <Col>
                 Sort by Hearing Date <br />
                 <label htmlFor="Search by hearing date">
-                  <input type="text" placeholder="Enter date here" />
+                  <input type="text" placeholder="Enter date" />
                 </label>
               </Col>
               <Col>
                 Title <br />
                 <label htmlFor="Search by title">
-                  <input type="text" placeholder="Enter title here" />
+                  <input type="text" placeholder="Enter title" />
                 </label>
               </Col>
             </Row>
@@ -170,30 +121,30 @@ const Dashboard = () => {
   );
 
   const returnList = () => (
-    <div style={{ height: '100vh', overflowY: 'auto' }}>
-      <Table striped>
-        <thead>
-          <tr>
-            <th>Bill #</th>
-            <th>Bill / Resolution</th>
-            <th>Office</th>
-            <th>Action</th>
-            <th>Committee</th>
-            <th>Hearing Date</th>
-            <th>Hearing Type</th>
-            <th>DOE Position</th>
-            <th>Testifier</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {createFakeData()}
-        </tbody>
-      </Table>
-    </div>
+    <Container className="py-3">
+      <div style={{ height: '100vh', overflowY: 'auto' }}>
+        <Table striped>
+          <thead>
+            <tr>
+              <td>Code</td>
+              <td>Report</td>
+              <td>Description</td>
+              <td>Office</td>
+              <td>Status</td>
+              <td>Date</td>
+              <td>Introducer</td>
+            </tr>
+          </thead>
+          <tbody>
+            {bills.map((bill) => <SavedBill key={bill._id} bill={bill} />)}
+          </tbody>
+        </Table>
+      </div>
+
+    </Container>
   );
 
-  return (
+  return (ready ? (
     <div>
       <SideNavBar />
       <div id="mainBody">
@@ -205,7 +156,7 @@ const Dashboard = () => {
         </Row>
       </div>
     </div>
-  );
+  ) : <LoadingSpinner />);
 };
 
 export default Dashboard;
