@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Accordion, Col, Container, Dropdown, DropdownButton, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
-import DashboardBill from '../components/DashboardBill';
+import SavedBill from '../components/SavedBill';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SideNavBar from '../components/SideNavBar';
 
@@ -127,15 +127,17 @@ const Dashboard = () => {
           <thead>
             <tr>
               <td>Code</td>
-              <td>Measure Title</td>
               <td>Report</td>
-              <td>Hour</td>
+              <td>Description</td>
+              <td>Office</td>
+              <td>Report</td>
+              <td>Status</td>
               <td>Date</td>
               <td>Introducer</td>
             </tr>
           </thead>
           <tbody>
-            {bills.map((bill) => <DashboardBill key={bill._id} bill={bill} />)}
+            {bills.map((bill) => <SavedBill key={bill._id} bill={bill} />)}
           </tbody>
         </Table>
       </div>
