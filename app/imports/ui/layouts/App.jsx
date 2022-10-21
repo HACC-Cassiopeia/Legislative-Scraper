@@ -23,6 +23,7 @@ import Dashboard from '../pages/Dashboard2';
 import NotAuthorized from '../pages/NotAuthorized';
 import BillResolutionTracker from '../pages/BillResolutionTracker';
 import AddTestimony from '../pages/AddTestimony';
+import Test from '../Test';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -36,6 +37,7 @@ const App = () => (
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/add-testimony" element={<AddTestimony />} />
         <Route path="/view/:_code" element={<BillResolutionTracker />} />
+        <Route path="/test" element={<Test />} />
         <Route
           path="/home"
           element={(
