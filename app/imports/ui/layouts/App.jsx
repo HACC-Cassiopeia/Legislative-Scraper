@@ -35,7 +35,7 @@ const App = () => (
         <Route path="/signout" element={<SignOut />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/add-testimony" element={<AddTestimony />} />
-        <Route path="/view" element={<BillResolutionTracker />} />
+        <Route path="/view/:_code" element={<BillResolutionTracker />} />
         <Route
           path="/home"
           element={(

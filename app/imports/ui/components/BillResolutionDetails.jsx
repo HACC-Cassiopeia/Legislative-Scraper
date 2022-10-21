@@ -2,17 +2,20 @@ import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Archive, FilePdfFill, Youtube } from 'react-bootstrap-icons';
 import { useTracker } from 'meteor/react-meteor-data';
+import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
 import LoadingSpinner from './LoadingSpinner';
 
 const BillResolutionDetails = () => {
 
+  const { _code } = useParams();
+
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, bill } = useTracker(() => {
     const subscription = Meteor.subscribe(SavedMeasures.userPublicationName);
     const rdy = subscription.ready();
-    const billItem = SavedMeasures.collection.find({ code: 'HB1442' }).fetch(); // TODO dummy data, need to actually link to dashboard...
+    const billItem = SavedMeasures.collection.find({ code: _code }).fetch();
     return {
       bill: billItem[0],
       ready: rdy,
