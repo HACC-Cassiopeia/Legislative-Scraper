@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Accordion, Col, Container, Dropdown, DropdownButton, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
-import DashboardBill from '../components/DashboardBill';
+import SavedBill from '../components/SavedBill';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SideNavBar from '../components/SideNavBar';
 
@@ -31,7 +31,7 @@ const Dashboard = () => {
 
   const returnFilter = () => (
     <Container className="pb-3">
-      <h2>Legislative Tracking System 2022</h2>
+      <h2>Legislative Tracking System 2022: Saved Bills</h2>
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Filter Options</Accordion.Header>
@@ -40,25 +40,25 @@ const Dashboard = () => {
               <Col>
                 Bill # <br />
                 <label htmlFor="Search by Bill #">
-                  <input type="text" placeholder="Enter bill # here" />
+                  <input type="text" placeholder="Enter bill #" />
                 </label>
               </Col>
               <Col>
                 Edit Date <br />
                 <label htmlFor="Search by edit date">
-                  <input type="text" placeholder="Enter date here" />
+                  <input type="text" placeholder="Enter date" />
                 </label>
               </Col>
               <Col>
                 Sort by Hearing Date <br />
                 <label htmlFor="Search by hearing date">
-                  <input type="text" placeholder="Enter date here" />
+                  <input type="text" placeholder="Enter date" />
                 </label>
               </Col>
               <Col>
                 Title <br />
                 <label htmlFor="Search by title">
-                  <input type="text" placeholder="Enter title here" />
+                  <input type="text" placeholder="Enter title" />
                 </label>
               </Col>
             </Row>
@@ -127,15 +127,16 @@ const Dashboard = () => {
           <thead>
             <tr>
               <td>Code</td>
-              <td>Measure Title</td>
               <td>Report</td>
-              <td>Hour</td>
+              <td>Description</td>
+              <td>Office</td>
+              <td>Status</td>
               <td>Date</td>
               <td>Introducer</td>
             </tr>
           </thead>
           <tbody>
-            {bills.map((bill) => <DashboardBill key={bill._id} bill={bill} />)}
+            {bills.map((bill) => <SavedBill key={bill._id} bill={bill} />)}
           </tbody>
         </Table>
       </div>

@@ -60,7 +60,7 @@ const SideNavBar = () => {
           <Nav.Link href="#" style={{ color: 'black' }}>
             <Icon.Calendar /> <b>CALENDAR</b>
           </Nav.Link>
-          <Nav.Link href="/dashboard" style={{ color: 'black' }}>
+          <Nav.Link href="/all-dashboard" style={{ color: 'black' }}>
             <Icon.Clipboard /> <b>DASHBOARD</b>
           </Nav.Link>
           <Nav.Link>

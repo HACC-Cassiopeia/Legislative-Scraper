@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const DashboardBill = ({ bill }) => (
+const SavedBill = ({ bill }) => (
   <tr>
     <td>{bill.code}</td>
-    <td>{bill.measureTitle}</td>
     <td>{bill.reportTitle}</td>
-    <td>{bill.statusHorS}</td>
+    <td>{bill.description}</td>
+    <td>{bill.office.toString()}</td>
+    <td>{bill.statusDescription}</td>
     <td>{bill.statusDate}</td>
     <td>{bill.introducer}</td>
     <td>
@@ -18,9 +19,12 @@ const DashboardBill = ({ bill }) => (
 );
 
 // Require a document to be passed to this component.
-DashboardBill.propTypes = {
+SavedBill.propTypes = {
   bill: PropTypes.shape({
     code: PropTypes.string,
+    office: PropTypes.shape({
+      office: PropTypes.string,
+    }),
     measurePdfUrl: PropTypes.string,
     measureArchiveUrl: PropTypes.string,
     measureTitle: PropTypes.string,
@@ -36,4 +40,4 @@ DashboardBill.propTypes = {
   }).isRequired,
 };
 
-export default DashboardBill;
+export default SavedBill;

@@ -18,8 +18,8 @@ import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
 import SignIn from '../pages/SignIn';
-// import Dashboard from '../pages/Dashboard';
-import Dashboard from '../pages/Dashboard2';
+import AllDashboard from '../pages/AllDashboard';
+import SavedDashboard from '../pages/SavedDashboard';
 import NotAuthorized from '../pages/NotAuthorized';
 import BillResolutionTracker from '../pages/BillResolutionTracker';
 import AddTestimony from '../pages/AddTestimony';
@@ -33,9 +33,10 @@ const App = () => (
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/all-dashboard" element={<AllDashboard />} />
+        <Route path="/saved-dashboard" element={<SavedDashboard />} />
         <Route path="/add-testimony" element={<AddTestimony />} />
-        <Route path="/details" element={<BillResolutionTracker />} />
+        <Route path="/view/:_code" element={<BillResolutionTracker />} />
         <Route
           path="/home"
           element={(
