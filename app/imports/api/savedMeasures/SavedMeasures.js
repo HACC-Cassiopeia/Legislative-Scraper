@@ -5,12 +5,12 @@ import { Tracker } from 'meteor/tracker';
 export const offices = ['BOE', 'OCID', 'OFS', 'OFO', 'OHE', 'OITS', 'OSIP', 'OSSS', 'OTM', 'SUPT'];
 
 /**
- * The MeasuresCollection. It encapsulates state and variable values for stuff.
+ * The SavedMeasuresCollection. It encapsulates state and variable values for stuff.
  */
-class MeasuresCollection {
+class SavedMeasuresCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'MeasuresCollection';
+    this.name = 'SavedMeasuresCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
@@ -20,21 +20,19 @@ class MeasuresCollection {
         type: String,
         allowedValues: offices,
       },
-      bitAppropriation: { type: Number, optional: true },
-      code: String,
-      companion: { type: String, optional: true },
-      currentReferral: { type: String, optional: true },
-      description: { type: String, optional: true },
-      introducer: { type: String, optional: true },
-      lastUpdated: { type: Number, optional: true },
-      measureArchiveUrl: { type: String, optional: true },
-      measureNumber: { type: Number, optional: true },
+      archive: { type: Boolean, optional: false },
+      code: { type: String, optional: true },
       measurePdfUrl: { type: String, optional: true },
+      measureArchiveUrl: { type: String, optional: true },
       measureTitle: { type: String, optional: true },
-      measureType: { type: String, optional: true },
       reportTitle: { type: String, optional: true },
-      status: { type: String, optional: true },
-      year: { type: Number, optional: true },
+      description: { type: String, optional: true },
+      statusHorS: { type: String, optional: true },
+      statusDescription: { type: String, optional: true },
+      statusDate: { type: String, optional: true },
+      introducer: { type: String, optional: true },
+      currentReferral: { type: String, optional: true },
+      companion: { type: String, optional: true },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -45,7 +43,7 @@ class MeasuresCollection {
 }
 
 /**
- * The singleton instance of the MeasuresCollection.
- * @type {MeasuresCollection}
+ * The singleton instance of the SavedMeasuresCollection.
+ * @type {SavedMeasuresCollection}
  */
-export const Measures = new MeasuresCollection();
+export const SavedMeasures = new SavedMeasuresCollection();
