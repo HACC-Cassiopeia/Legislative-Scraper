@@ -26,7 +26,7 @@ const SideNavBar = () => {
     position: 'fixed',
     maxWidth: '25%',
     minHeight: '100vh',
-    backgroundColor: 'cyan',
+    backgroundColor: '#00FFFF',
     color: 'white',
     fontSize: '20px',
     textAlign: 'left',
