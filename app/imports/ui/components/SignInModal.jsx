@@ -32,28 +32,29 @@ const SignInModal = () => {
 
   // Handle Signin submission using Meteor's account mechanism.
   const submit = (doc) => {
-    // console.log('submit', doc, redirect);
+    console.log('submit', doc, redirect);
     const { email, password } = doc;
     Meteor.loginWithPassword(email, password, (err) => {
       if (err) {
         setError(err.reason);
+        console.log(err.reason);
       } else {
         setRedirect(true);
       }
     });
-    // console.log('submit2', email, password, error, redirect);
+    console.log('submit2', email, password, error, redirect);
   };
 
   // Render the signin form.
   // console.log('render', error, redirect);
   // if correct authentication, redirect to page instead of login screen
   if (redirect) {
-    return <Navigate to="/home" />;
+    return <Navigate to='/home' />;
   }
   // Otherwise return the Login form.
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant='primary' onClick={handleShow}>
         <b>
           <Icon.PersonCheck /> <b>Sign In</b>
         </b>
@@ -67,32 +68,32 @@ const SignInModal = () => {
           </Modal.Header>
           <Modal.Body>
             <TextField
-              id="signin-form-email"
-              name="email"
-              placeholder="E-mail address"
+              id='signin-form-email'
+              name='email'
+              placeholder='E-mail address'
             />
             <TextField
-              id="signin-form-password"
-              name="password"
-              placeholder="Password"
-              type="password"
+              id='signin-form-password'
+              name='password'
+              placeholder='Password'
+              type='password'
             />
             <ErrorsField />
-            <div className="text-center">
-              <SubmitField id="signin-form-submit" />
+            <div className='text-center'>
+              <SubmitField id='signin-form-submit' />
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <div className="text-center">
+            <div className='text-center'>
               <h7>Don&apos;t have an account yet? </h7>
-              <Link to="/signup">Sign Up</Link>
+              <Link to='/signup'>Sign Up</Link>
             </div>
           </Modal.Footer>
 
           {error === '' ? (
             ''
           ) : (
-            <Alert variant="danger">
+            <Alert variant='danger'>
               <Alert.Heading>Login was not successful</Alert.Heading>
               {error}
             </Alert>
