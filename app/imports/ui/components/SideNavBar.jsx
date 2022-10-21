@@ -46,14 +46,13 @@ const SideNavBar = () => {
 
   if (width > breakPoint) {
     return (
-      <Nav
-        style={sideBarStyle}
-        activeKey="/home"
-        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
-      >
+      <Nav style={sideBarStyle} activeKey="/home">
         <Nav.Item>
           <Nav.Link href="#" style={{ color: 'black' }}>
-            <Icon.Inbox /> <b>INBOX </b>
+            <b>
+              <Icon.Inbox />
+              &nbsp; INBOX
+            </b>
           </Nav.Link>
           <Nav.Link href="/home" style={{ color: 'black' }}>
             <Icon.HouseDoor /> <b>HOME</b>
