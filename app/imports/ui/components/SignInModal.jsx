@@ -48,12 +48,12 @@ const SignInModal = () => {
   // console.log('render', error, redirect);
   // if correct authentication, redirect to page instead of login screen
   if (redirect) {
-    return <Navigate to="/home" />;
+    return <Navigate to='/home' />;
   }
   // Otherwise return the Login form.
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant='primary' onClick={handleShow}>
         <b>
           <Icon.PersonCheck /> <b>Sign In</b>
         </b>
@@ -67,32 +67,32 @@ const SignInModal = () => {
           </Modal.Header>
           <Modal.Body>
             <TextField
-              id="signin-form-email"
-              name="email"
-              placeholder="E-mail address"
+              id='signin-form-email'
+              name='email'
+              placeholder='E-mail address'
             />
             <TextField
-              id="signin-form-password"
-              name="password"
-              placeholder="Password"
-              type="password"
+              id='signin-form-password'
+              name='password'
+              placeholder='Password'
+              type='password'
             />
             <ErrorsField />
-            <div className="text-center">
-              <SubmitField id="signin-form-submit" />
+            <div className='text-center'>
+              <SubmitField id='signin-form-submit' />
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <div className="text-center">
+            <div className='text-center'>
               <h7>Don&apos;t have an account yet? </h7>
-              <Link to="/signup">Sign Up</Link>
+              <Link to='/signup'>Sign Up</Link>
             </div>
           </Modal.Footer>
 
           {error === '' ? (
             ''
           ) : (
-            <Alert variant="danger">
+            <Alert variant='danger'>
               <Alert.Heading>Login was not successful</Alert.Heading>
               {error}
             </Alert>

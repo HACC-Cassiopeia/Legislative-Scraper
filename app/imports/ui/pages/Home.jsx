@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Row, Col, Button, Container } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 import SideNavBar from '../components/SideNavBar';
+import { useTracker } from 'meteor/react-meteor-data';
 
 const Home = () => {
   const mainBodyStyle = {
@@ -21,21 +22,29 @@ const Home = () => {
       window.removeEventListener('resize', handleResizeWindow);
     };
   }, []);
+
+  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  const { currentUser } = useTracker(
+    () => ({
+      currentUser: Meteor.user() ? Meteor.user().username : '',
+    }),
+    [],
+  );
+
   const breakPoint = 800;
   if (width < breakPoint) {
     return (
       <>
         <SideNavBar />
         &nbsp;
-        <div id="mobileMainBody">
+        <div id='mobileMainBody'>
           <Container fluid>
             <br />
             <h2
               style={{
                 textAlign: 'center',
                 fontWeight: 'bolder',
-              }}
-            >
+              }}>
               Legislative Tracking System
             </h2>
             <Row>
@@ -74,8 +83,7 @@ const Home = () => {
           style={{
             textAlign: 'center',
             fontWeight: 'bolder',
-          }}
-        >
+          }}>
           Legislative Tracking System
         </h2>
         <hr />
@@ -86,7 +94,7 @@ const Home = () => {
                 <Card.Header>PROFILE</Card.Header>
                 <Card.Body>
                   <Card.Title>Name:</Card.Title>
-                  <Card.Subtitle>Email: </Card.Subtitle>
+                  <Card.Subtitle>Email: {currentUser} </Card.Subtitle>
                   <Card.Text>
                     <div style={{ textAlign: 'center' }}>
                       <b>Role</b>
