@@ -40,25 +40,25 @@ const Dashboard = () => {
               <Col>
                 Bill # <br />
                 <label htmlFor="Search by Bill #">
-                  <input type="text" placeholder="Enter bill # here" />
+                  <input type="text" placeholder="Enter bill #" />
                 </label>
               </Col>
               <Col>
                 Edit Date <br />
                 <label htmlFor="Search by edit date">
-                  <input type="text" placeholder="Enter date here" />
+                  <input type="text" placeholder="Enter date" />
                 </label>
               </Col>
               <Col>
                 Sort by Hearing Date <br />
                 <label htmlFor="Search by hearing date">
-                  <input type="text" placeholder="Enter date here" />
+                  <input type="text" placeholder="Enter date" />
                 </label>
               </Col>
               <Col>
                 Title <br />
                 <label htmlFor="Search by title">
-                  <input type="text" placeholder="Enter title here" />
+                  <input type="text" placeholder="Enter title" />
                 </label>
               </Col>
             </Row>

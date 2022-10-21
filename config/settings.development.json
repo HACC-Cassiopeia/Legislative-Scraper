@@ -1,7 +1,12 @@
 {
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "john@foo.com", "password": "changeme" },
+    { "email":  "processor@foo.com", "password": "1", "role": "processor"},
+    { "email":  "writer@foo.com", "password": "1", "role": "writer"},
+    { "email":  "oa@foo.com", "password": "1", "role": "officeApprover"},
+    { "email":  "pa@foo.com", "password": "1", "role": "PIPEApprover"},
+    { "email":  "fa@foo.com", "password": "1", "role": "finalApprover"}
   ],
 
   "defaultData": [
