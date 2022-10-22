@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Accordion } from 'react-bootstrap';
 import { Archive, FilePdfFill, Youtube } from 'react-bootstrap-icons';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
@@ -22,14 +22,29 @@ const BillResolutionDetails = () => {
     };
   }, false);
 
+  function introducerShortened() {
+    // eslint-disable-next-line for-direction
+    for (let i = 0; i < bill.introducer.length; i++) {
+      if (bill.introducer[i] === ' ' && i > 3) {
+        return bill.introducer.substring(0, i - 1);
+      }
+    }
+    return bill.introducer;
+  }
+
+  // TODO if bill not found, need to redirect to 404
   return (ready ? (
     <Container className="text-center border border-1 small mb-5">
       <Row id="billTitle">
         <Col>
-          {/* empty column for alignment */}
+          {/* EMPTY COL FOR ALIGNMENT */}
         </Col>
         <Col>
-          <h3 className="pt-2"><b>{bill.code}</b></h3>
+          <h3 className="pt-2">
+            <a href={bill.measureArchiveUrl} target="_blank" rel="noreferrer"><b>{bill.code}</b></a>
+            &nbsp;
+            <a aria-label="PDF link" href={bill.measurePdfUrl} target="_blank" rel="noreferrer"><FilePdfFill className="pb-1" /></a>
+          </h3>
         </Col>
         <Col className="text-end">
           <Card id="billStatus" className="p-2 m-1 float-end flex-row">
@@ -131,10 +146,15 @@ const BillResolutionDetails = () => {
           </Row>
           <Row className="py-2">
             <Col>
-              {/* TODO not sure if this should be a link. looked like it was in lotus notes */}
-              <div className="fakeLink4Rob">{bill.introducer}</div>
-              {/* TODO have to scrap the date somehow, didn't see it on the bill page */}
-              **00/00/0000**
+              <Accordion flush className="introducerAccordion">
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header> {introducerShortened()} </Accordion.Header>
+                  <Accordion.Body>
+                    {`${bill.introducer} \n**00/00/0000**`}
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+              {/* TODO have to scrap the date somehow? didn't see it on the bill page */}
             </Col>
           </Row>
         </Col>
@@ -252,8 +272,7 @@ const BillResolutionDetails = () => {
           </Row>
           <Row className="py-2">
             <Col>
-              {/* TODO 'last status text' needs to be scraped from the bill page, last item in the 'status text' list */}
-              **12/10/2021 D Carried over to 2022 Regular Session.**
+              {`${bill.statusDate}: ${bill.statusDescription}`}
             </Col>
           </Row>
         </Col>

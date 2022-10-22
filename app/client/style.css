@@ -87,6 +87,15 @@ h2 {
   text-decoration-line: underline;
 }
 
+.introducerAccordion .accordion-button {
+  font-size: small;
+  margin: 0 auto;
+  padding-top: 0;
+  width: 75%;
+  padding-bottom: 0;
+}
+
+
 #mainBody {
   margin-left: 25%;
   max-width: 65vw;
