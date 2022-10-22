@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Star, StarFill } from 'react-bootstrap-icons';
 import { Button } from 'react-bootstrap';
 
-let selected = false;
+const selected = false;
 
 // shorter bill description
 function getShortDesc(desc) {
@@ -18,10 +18,10 @@ function getShortDesc(desc) {
 }
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const AllBill = ({ bill }) => {
+const AllBill = ({ bill }) => (
   <tr>
     <td className="p-3">
-      <Button className="p-0 starButton" onClick={selected = !selected}>
+      <Button className="p-0 starButton">
         {selected ? <StarFill /> : <Star />}
       </Button>
     </td>
@@ -39,8 +39,8 @@ const AllBill = ({ bill }) => {
     <td>
       {`(${bill.statusHorS}) ${bill.statusDescription}`}
     </td>
-  </tr>;
-};
+  </tr>
+);
 
 // Require a document to be passed to this component.
 AllBill.propTypes = {
