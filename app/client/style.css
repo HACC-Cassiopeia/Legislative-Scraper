@@ -98,12 +98,20 @@ h2 {
   padding-top: 0;
 }
 
-.billAccordion .accordion-button, .accordion-body {
+.billAccordion .accordion-body {
   --bs-accordion-active-color: black;
   --bs-accordion-active-bg: transparent;
   z-index: 0;
   margin: 0 auto;
   font-size: 13px;
+  padding: 0;
+}
+
+.billAccordion .accordion-button {
+  --bs-accordion-active-color: black;
+  --bs-accordion-active-bg: transparent;
+  z-index: 0;
+  margin: 0 auto;
   padding: 0;
 }
 
