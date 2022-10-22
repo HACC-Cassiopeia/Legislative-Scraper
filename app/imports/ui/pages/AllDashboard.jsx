@@ -164,13 +164,13 @@ const AllDashboard = () => {
           </tr>
         </thead>
         <tbody>
-          { bills.map((bill) => <AllBill key={bill._id} bill={bill} />)}
+          { ready ? bills.map((bill) => <AllBill key={bill._id} bill={bill} />) : <LoadingSpinner />}
         </tbody>
       </Table>
     </div>
   );
 
-  return (ready ? (
+  return (
     <div>
       <SideNavBar id="nav" />
       <div id="mainBody">
@@ -182,7 +182,7 @@ const AllDashboard = () => {
         </Row>
       </div>
     </div>
-  ) : <LoadingSpinner />);
+  );
 };
 
 export default AllDashboard;
