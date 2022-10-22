@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Card, Accordion } from 'react-bootstrap';
 import { Archive, FilePdfFill, Youtube } from 'react-bootstrap-icons';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -21,6 +21,10 @@ const BillResolutionDetails = () => {
       ready: rdy,
     };
   }, false);
+
+  useEffect(() => {
+    document.title = `DOE Legislative Tracker - ${_code}`;
+  });
 
   // TODO change depending on bill status
   const billStatusStyle = {

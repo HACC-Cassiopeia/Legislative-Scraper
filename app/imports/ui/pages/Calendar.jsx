@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { Container } from 'react-bootstrap';
@@ -26,19 +25,25 @@ const events = [
   { title: 'Dinner', start: getDate('YEAR-MONTH-18T20:00:00+00:00') },
 ];
 
-const Calendar = () => (
-  <Container className="p-lg-5">
-    <FullCalendar
-      defaultView="dayGridMonth"
-      header={{
-        left: 'prev,next',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay',
-      }}
-      plugins={[dayGridPlugin]}
-      events={events}
-    />
-  </Container>
-);
+const Calendar = () => {
+  useEffect(() => {
+    document.title = 'DOE Legislative Tracker - Calendar';
+  });
+
+  return (
+    <Container className="p-lg-5">
+      <FullCalendar
+        defaultView="dayGridMonth"
+        header={{
+          left: 'prev,next',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay',
+        }}
+        plugins={[dayGridPlugin]}
+        events={events}
+      />
+    </Container>
+  );
+};
 
 export default Calendar;

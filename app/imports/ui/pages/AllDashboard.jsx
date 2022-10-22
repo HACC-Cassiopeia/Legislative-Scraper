@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Row,
   Col,
@@ -35,6 +35,10 @@ const AllDashboard = () => {
       ready: rdy,
     };
   }, []);
+
+  useEffect(() => {
+    document.title = 'DOE Legislative Tracker - View Bills/Measures';
+  });
 
   /**
   const returnSideMenu = () => (
