@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import scrapers from './utils/scrapers';
 
+/*
+ * Need to add error handling
+ */
+
+// could use props to pass down 'year' and 'hb' to scraper
 const Test = () => {
-  // initial state is empty array otherwise you'll ge an error
+  // initial state is empty array
   const [data, setData] = useState([]);
   // gets data from capitol site
   useEffect(() => {
