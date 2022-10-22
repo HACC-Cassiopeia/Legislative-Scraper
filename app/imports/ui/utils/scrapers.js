@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const scrapeAll = async (year, mt) => {
   try {
-    const request = await axios.get(`/api/${year}/${mt}`);
+    const request = await axios.get(`/api/scrapeAll/${year}/${mt}`);
     return request.data;
   } catch {
     // eslint-disable-next-line no-console
