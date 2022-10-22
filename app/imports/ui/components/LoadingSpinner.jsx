@@ -1,11 +1,15 @@
 import React from 'react';
-import { Container, Row, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
 
 const LoadingSpinner = () => (
   <Container>
-    <Row className="justify-content-md-center">
-      <Spinner animation="border" />
-      Getting data
+    <Row>
+      <Col className="d-flex justify-content-center m-3">
+        <Spinner animation="border" />
+        <p className="pt-1">
+          &nbsp;&nbsp;Loading
+        </p>
+      </Col>
     </Row>
   </Container>
 );

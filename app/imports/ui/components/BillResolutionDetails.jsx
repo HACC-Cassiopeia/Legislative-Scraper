@@ -22,6 +22,16 @@ const BillResolutionDetails = () => {
     };
   }, false);
 
+  // TODO change depending on bill status
+  const billStatusStyle = {
+    backgroundColor: '#f5f5f5',
+  };
+
+  const fakeLink4Rob = {
+    color: '#6f5cf3',
+    textDecorationLine: 'underline',
+  };
+
   function introducerShortened() {
     // eslint-disable-next-line for-direction
     for (let i = 0; i < bill.introducer.length; i++) {
@@ -45,7 +55,7 @@ const BillResolutionDetails = () => {
   // TODO if bill not found, need to redirect to 404
   return (ready ? (
     <Container className="text-center border border-1 small mb-5">
-      <Row id="billTitle">
+      <Row style={{ backgroundColor: '#ddf3dd' }}>
         <Col>
           {/* EMPTY COL FOR ALIGNMENT */}
         </Col>
@@ -57,7 +67,7 @@ const BillResolutionDetails = () => {
           </h3>
         </Col>
         <Col className="text-end">
-          <Card id="billStatus" className="p-2 m-1 float-end flex-row">
+          <Card style={billStatusStyle} className="p-2 m-1 float-end flex-row">
             <Archive className="m-1 me-2" />
             {/* TODO Status? */}
             Deferred/Inactive
@@ -297,8 +307,8 @@ const BillResolutionDetails = () => {
           <Row className="py-1">
             <Col>
               {/* TODO 'versions,' needs to be scraped from bill page */}
-              <div className="fakeLink4Rob">**HB1078 HD1**</div>
-              <div className="fakeLink4Rob">**HB1078**</div>
+              <div style={fakeLink4Rob}>**HB1078 HD1**</div>
+              <div style={fakeLink4Rob}>**HB1078**</div>
             </Col>
           </Row>
         </Col>
@@ -311,8 +321,8 @@ const BillResolutionDetails = () => {
           <Row className="py-1">
             <Col>
               {/* TODO 'committee reports,' same as above */}
-              <div className="fakeLink4Rob">**HB1078 HD1 HSCR479**</div>
-              <div className="fakeLink4Rob">**HB1078 HD1 HSCR784**</div>
+              <div style={fakeLink4Rob}>**HB1078 HD1 HSCR479**</div>
+              <div style={fakeLink4Rob}>**HB1078 HD1 HSCR784**</div>
             </Col>
           </Row>
         </Col>
@@ -325,8 +335,8 @@ const BillResolutionDetails = () => {
           <Row className="py-1">
             <Col>
               {/* TODO add YouTube links, same as above */}
-              <div className="fakeLink4Rob">**HEARING EDN 02-16-21 2:00P**</div>
-              <div className="fakeLink4Rob">**HEARING FIN 03-02-21 1 11:00A**</div>
+              <div style={fakeLink4Rob}>**HEARING EDN 02-16-21 2:00P**</div>
+              <div style={fakeLink4Rob}>**HEARING FIN 03-02-21 1 11:00A**</div>
             </Col>
           </Row>
         </Col>
@@ -373,7 +383,7 @@ const BillResolutionDetails = () => {
             <Col>
               {/* TODO testifier */}
               **04/04/2022 1:30 PM - Randall T. Tanaka** <br />
-              <div className="fakeLink4Rob">**03/22/2022 2:00 PM - Keith Hayashi / Randall Tanaka**</div>
+              <div style={fakeLink4Rob}>**03/22/2022 2:00 PM - Keith Hayashi / Randall Tanaka**</div>
             </Col>
           </Row>
         </Col>
@@ -386,8 +396,8 @@ const BillResolutionDetails = () => {
           <Row className="py-2">
             <Col>
               {/* TODO approved testimony list... these links are scraped from the bill page */}
-              <div className="fakeLink4Rob"><FilePdfFill /> **SB3096-HD2_EDN_04-04-22_FIN_Support.pdf**</div>
-              <div className="fakeLink4Rob"><FilePdfFill /> **SB3096-SD1_EDN_03-22-22_EDN_Support.pdf**</div>
+              <div style={fakeLink4Rob}><FilePdfFill /> **SB3096-HD2_EDN_04-04-22_FIN_Support.pdf**</div>
+              <div style={fakeLink4Rob}><FilePdfFill /> **SB3096-SD1_EDN_03-22-22_EDN_Support.pdf**</div>
             </Col>
           </Row>
         </Col>
