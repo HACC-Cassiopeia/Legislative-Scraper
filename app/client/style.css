@@ -95,10 +95,18 @@ h2 {
   padding-bottom: 0;
 }
 
+.starButton {
+  background-color: transparent !important;
+  color: black !important;
+  border-width: 0 !important;
+}
+
+#navBar {
+  width: 15%;
+}
 
 #mainBody {
-  margin-left: 25%;
-  max-width: 65vw;
+  margin-left: 15%;
 }
 
 #mobileMainBody {

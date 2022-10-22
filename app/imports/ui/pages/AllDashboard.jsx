@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Container,
   Row,
   Col,
   Table,
@@ -58,8 +57,8 @@ const AllDashboard = () => {
   ); */
 
   const returnFilter = () => (
-    <Container className="pb-3">
-      <h2>Legislative Tracking System 2022: All Bills</h2>
+    <div className="pb-3">
+      <h2 className="pt-3 text-center"><b>Legislative Tracking System 2022: All Bills</b></h2>
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Filter Options</Accordion.Header>
@@ -145,7 +144,7 @@ const AllDashboard = () => {
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
-    </Container>
+    </div>
   );
 
   const returnList = () => (
@@ -153,12 +152,15 @@ const AllDashboard = () => {
       <Table striped>
         <thead>
           <tr>
-            <th>Save Bill?</th>
-            <th>Measure Status</th>
+            <th> </th>
+            <th>Bill / Resolution</th>
+            <th>Office</th>
+            <th>Action</th>
+            <th>Committee</th>
+            <th>Hearing</th>
+            <th>Position</th>
+            <th>Testifier</th>
             <th>Status</th>
-            <th>Introducer(s)</th>
-            <th>Current Referral</th>
-            <th>Companion</th>
           </tr>
         </thead>
         <tbody>
@@ -170,7 +172,7 @@ const AllDashboard = () => {
 
   return (ready ? (
     <div>
-      <SideNavBar />
+      <SideNavBar id="nav" />
       <div id="mainBody">
         <Row id="dashboard-screen">
           <Col>

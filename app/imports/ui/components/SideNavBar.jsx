@@ -24,7 +24,7 @@ const SideNavBar = () => {
 
   const sideBarStyle = {
     position: 'fixed',
-    maxWidth: '25%',
+    width: '15%',
     minHeight: '100vh',
     backgroundColor: 'cyan',
     color: 'white',
@@ -49,7 +49,6 @@ const SideNavBar = () => {
       <Nav
         style={sideBarStyle}
         activeKey="/home"
-        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
       >
         <Nav.Item>
           <Nav.Link href="#" style={{ color: 'black' }}>
@@ -82,7 +81,6 @@ const SideNavBar = () => {
     <Nav
       style={mobileSideBarStyle}
       activeKey="/home"
-      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
     >
       <Nav.Item>
         <Nav.Link href="#" style={{ color: 'black' }}>

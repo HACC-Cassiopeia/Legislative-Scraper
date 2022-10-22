@@ -13,7 +13,7 @@ const SavedBill = ({ bill }) => (
     <td>{bill.statusDate}</td>
     <td>{bill.introducer}</td>
     <td>
-      <Link to={`/information/${bill._id}`}>Read bill</Link>
+      <Link to={`/view/${bill.code}`}>View Details</Link>
     </td>
   </tr>
 );
