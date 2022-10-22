@@ -8,69 +8,35 @@ import {
   Dropdown,
   DropdownButton,
 } from 'react-bootstrap';
-// import { useTracker } from 'meteor/react-meteor-data';
-// import { SavedMeasures } from '../../api/measures/SavedMeasures';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
+import { ScraperData } from '../../api/scraperData/ScraperData';
+import LoadingSpinner from '../components/LoadingSpinner';
 import SideNavBar from '../components/SideNavBar';
+import AllBill from '../components/AllBill';
 
-const Dashboard = () => {
+const AllDashboard = () => {
   /* states for item filtering */
   const [office, setOffice] = useState('Select an Office');
   const [action, setAction] = useState('Select a Status');
   const [status, setStatus] = useState('Select an Action');
 
-  /* importing fake database info */
-  /*
-  const { bills } = useTracker(() => {
-    const billItems = SavedMeasures.collection.find({}).fetch();
+  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  const { ready, bills } = useTracker(() => {
+    // Note that this subscription will get cleaned up
+    // when your component is unmounted or deps change.
+    // Get access to Stuff documents.
+    const subscription = Meteor.subscribe(ScraperData.userPublicationName);
+    // Determine if the subscription is ready
+    const rdy = subscription.ready();
+    // Get the Stuff documents
+    const billItems = ScraperData.collection.find({}).fetch();
     return {
       bills: billItems,
+      ready: rdy,
     };
   }, []);
-  */
 
-  /* format info from the db */
-  /*
-  const createBillData = () => (
-    <tbody>
-      {bills.map((bill) => (
-        <tr key={bill.billNumber}>
-          <td>{bill.billNumber}</td>
-          <td>Description here</td>
-          <td>Fun office name</td>
-          <td>Action type</td>
-          <td>Committee name</td>
-          <td>01/01/2001</td>
-          <td>Hearing</td>
-          <td>Comments</td>
-          <td>Name</td>
-          <td>Approval needed</td>
-        </tr>
-      ))}
-    </tbody>
-  );
-  */
-
-  /* temporary function to create fake data */
-  const createFakeData = () => {
-    const data = [];
-    for (let i = 1; i < 20; i++) {
-      data.push(
-        <tr>
-          <td>1234</td>
-          <td>Description here</td>
-          <td>Fun office name</td>
-          <td>Action type</td>
-          <td>Committee name</td>
-          <td>01/01/2001</td>
-          <td>Hearing</td>
-          <td>Comments</td>
-          <td>Name</td>
-          <td>Approval needed</td>
-        </tr>,
-      );
-    }
-    return <tbody>{data}</tbody>;
-  };
   /**
   const returnSideMenu = () => (
     <Row>
@@ -93,7 +59,7 @@ const Dashboard = () => {
 
   const returnFilter = () => (
     <Container className="pb-3">
-      <h2>Legislative Tracking System 2022</h2>
+      <h2>Legislative Tracking System 2022: All Bills</h2>
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Filter Options</Accordion.Header>
@@ -187,24 +153,22 @@ const Dashboard = () => {
       <Table striped>
         <thead>
           <tr>
-            <th>Bill #</th>
-            <th>Bill / Resolution</th>
-            <th>Office</th>
-            <th>Action</th>
-            <th>Committee</th>
-            <th>Hearing Date</th>
-            <th>Hearing Type</th>
-            <th>DOE Position</th>
-            <th>Testifier</th>
+            <th>Save Bill?</th>
+            <th>Measure Status</th>
             <th>Status</th>
+            <th>Introducer(s)</th>
+            <th>Current Referral</th>
+            <th>Companion</th>
           </tr>
         </thead>
-        {createFakeData()}
+        <tbody>
+          { bills.map((bill) => <AllBill key={bill._id} bill={bill} />)}
+        </tbody>
       </Table>
     </div>
   );
 
-  return (
+  return (ready ? (
     <div>
       <SideNavBar />
       <div id="mainBody">
@@ -216,7 +180,7 @@ const Dashboard = () => {
         </Row>
       </div>
     </div>
-  );
+  ) : <LoadingSpinner />);
 };
 
-export default Dashboard;
+export default AllDashboard;
