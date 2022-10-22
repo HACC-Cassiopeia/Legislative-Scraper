@@ -78,12 +78,6 @@ app.get('/api/:year/:mt', async (req, res) => {
       });
     }
   });
-  // axios(url)
-  //   .then(response => {
-  //     const html = response.data;
-  //     array.push(html);
-  //   })
-  //   .catch(() => console.log('error'));
   res.status(200).json({ scrapedData });
 });
 
