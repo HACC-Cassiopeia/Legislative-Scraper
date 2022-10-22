@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Alert, Button, Modal } from 'react-bootstrap';
@@ -23,6 +23,20 @@ const SignInModal = () => {
     email: String,
     password: String,
   });
+
+  // the width of the screen using React useEffect
+  const [width, setWidth] = useState(window.innerWidth);
+  // make sure that it changes with the window size
+  useEffect(() => {
+    const handleResizeWindow = () => setWidth(window.innerWidth);
+    // subscribe to window resize event "onComponentDidMount"
+    window.addEventListener('resize', handleResizeWindow);
+    return () => {
+      // unsubscribe "onComponentDestroy"
+      window.removeEventListener('resize', handleResizeWindow);
+    };
+  }, []);
+  const breakPoint = 800;
 
   const bridge = new SimpleSchema2Bridge(schema);
   const [show, setShow] = useState(false);
@@ -49,7 +63,59 @@ const SignInModal = () => {
   // console.log('render', error, redirect);
   // if correct authentication, redirect to page instead of login screen
   if (redirect) {
-    return <Navigate to='/home' />;
+    return <Navigate to='/' />;
+  }
+  if (breakPoint > width) {
+    return (
+      <>
+        <Button variant='primary' onClick={handleShow}>
+          <b>
+            <Icon.PersonCheck />
+          </b>
+        </Button>
+        <Modal show={show} onHide={handleClose}>
+          <AutoForm schema={bridge} onSubmit={(data) => submit(data)}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                <h3 style={{ textAlign: 'center' }}>Login to your account</h3>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <TextField
+                id='signin-form-email'
+                name='email'
+                placeholder='E-mail address'
+              />
+              <TextField
+                id='signin-form-password'
+                name='password'
+                placeholder='Password'
+                type='password'
+              />
+              <ErrorsField />
+              <div className='text-center'>
+                <SubmitField id='signin-form-submit' />
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <div className='text-center'>
+                <h7>Don&apos;t have an account yet? </h7>
+                <Link to='/signup'>Sign Up</Link>
+              </div>
+            </Modal.Footer>
+
+            {error === '' ? (
+              ''
+            ) : (
+              <Alert variant='danger'>
+                <Alert.Heading>Login was not successful</Alert.Heading>
+                {error}
+              </Alert>
+            )}
+          </AutoForm>
+        </Modal>
+      </>
+    );
   }
   // Otherwise return the Login form.
   return (

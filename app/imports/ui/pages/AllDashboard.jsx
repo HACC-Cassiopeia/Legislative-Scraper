@@ -58,35 +58,35 @@ const AllDashboard = () => {
   ); */
 
   const returnFilter = () => (
-    <Container className="pb-3">
+    <Container className='pb-3'>
       <h2>Legislative Tracking System 2022: All Bills</h2>
       <Accordion>
-        <Accordion.Item eventKey="0">
+        <Accordion.Item eventKey='0'>
           <Accordion.Header>Filter Options</Accordion.Header>
           <Accordion.Body>
-            <Row className="pb-4">
+            <Row className='pb-4'>
               <Col>
                 Bill # <br />
-                <label htmlFor="Search by Bill #">
-                  <input type="text" placeholder="Enter bill # here" />
+                <label htmlFor='Search by Bill #'>
+                  <input type='text' placeholder='Enter bill # here' />
                 </label>
               </Col>
               <Col>
                 Edit Date <br />
-                <label htmlFor="Search by edit date">
-                  <input type="text" placeholder="Enter date here" />
+                <label htmlFor='Search by edit date'>
+                  <input type='text' placeholder='Enter date here' />
                 </label>
               </Col>
               <Col>
                 Sort by Hearing Date <br />
-                <label htmlFor="Search by hearing date">
-                  <input type="text" placeholder="Enter date here" />
+                <label htmlFor='Search by hearing date'>
+                  <input type='text' placeholder='Enter date here' />
                 </label>
               </Col>
               <Col>
                 Title <br />
-                <label htmlFor="Search by title">
-                  <input type="text" placeholder="Enter title here" />
+                <label htmlFor='Search by title'>
+                  <input type='text' placeholder='Enter title here' />
                 </label>
               </Col>
             </Row>
@@ -94,32 +94,30 @@ const AllDashboard = () => {
               <Col>
                 Office <br />
                 <DropdownButton
-                  id="dropdown-basic-button"
+                  id='dropdown-basic-button'
                   title={office}
-                  onSelect={(e) => setOffice(e)}
-                >
-                  <Dropdown.Item eventKey="OCID">OCID</Dropdown.Item>
-                  <Dropdown.Item eventKey="OFO">OFO</Dropdown.Item>
-                  <Dropdown.Item eventKey="OFS">OFS</Dropdown.Item>
-                  <Dropdown.Item eventKey="OHE">OHE</Dropdown.Item>
-                  <Dropdown.Item eventKey="OITS">OITS</Dropdown.Item>
-                  <Dropdown.Item eventKey="OSIP">OSIP</Dropdown.Item>
-                  <Dropdown.Item eventKey="OSSS">OSSS</Dropdown.Item>
-                  <Dropdown.Item eventKey="OTM">OTM</Dropdown.Item>
+                  onSelect={(e) => setOffice(e)}>
+                  <Dropdown.Item eventKey='OCID'>OCID</Dropdown.Item>
+                  <Dropdown.Item eventKey='OFO'>OFO</Dropdown.Item>
+                  <Dropdown.Item eventKey='OFS'>OFS</Dropdown.Item>
+                  <Dropdown.Item eventKey='OHE'>OHE</Dropdown.Item>
+                  <Dropdown.Item eventKey='OITS'>OITS</Dropdown.Item>
+                  <Dropdown.Item eventKey='OSIP'>OSIP</Dropdown.Item>
+                  <Dropdown.Item eventKey='OSSS'>OSSS</Dropdown.Item>
+                  <Dropdown.Item eventKey='OTM'>OTM</Dropdown.Item>
                 </DropdownButton>
               </Col>
               <Col>
                 Status <br />
                 <DropdownButton
-                  id="dropdown-basic-button"
+                  id='dropdown-basic-button'
                   title={action}
-                  onSelect={(e) => setAction(e)}
-                >
-                  <Dropdown.Item eventKey="Action">Action</Dropdown.Item>
-                  <Dropdown.Item eventKey="Another action">
+                  onSelect={(e) => setAction(e)}>
+                  <Dropdown.Item eventKey='Action'>Action</Dropdown.Item>
+                  <Dropdown.Item eventKey='Another action'>
                     Another action
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey="Something else">
+                  <Dropdown.Item eventKey='Something else'>
                     Something else
                   </Dropdown.Item>
                 </DropdownButton>
@@ -127,15 +125,14 @@ const AllDashboard = () => {
               <Col>
                 Action <br />
                 <DropdownButton
-                  id="dropdown-basic-button"
+                  id='dropdown-basic-button'
                   title={status}
-                  onSelect={(e) => setStatus(e)}
-                >
-                  <Dropdown.Item eventKey="Action">Action</Dropdown.Item>
-                  <Dropdown.Item eventKey="Another action">
+                  onSelect={(e) => setStatus(e)}>
+                  <Dropdown.Item eventKey='Action'>Action</Dropdown.Item>
+                  <Dropdown.Item eventKey='Another action'>
                     Another action
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey="Something else">
+                  <Dropdown.Item eventKey='Something else'>
                     Something else
                   </Dropdown.Item>
                 </DropdownButton>
@@ -162,25 +159,28 @@ const AllDashboard = () => {
           </tr>
         </thead>
         <tbody>
-          { bills.map((bill) => <AllBill key={bill._id} bill={bill} />)}
+          {bills.map((bill) => (
+            <AllBill key={bill._id} bill={bill} />
+          ))}
         </tbody>
       </Table>
     </div>
   );
 
-  return (ready ? (
+  return ready ? (
     <div>
-      <SideNavBar />
-      <div id="mainBody">
-        <Row id="dashboard-screen">
+      <div id='mainBody'>
+        <Row id='dashboard-screen'>
           <Col>
-            <Row id="dashboard-filter">{returnFilter()}</Row>
-            <Row id="dashboard-list">{returnList()}</Row>
+            <Row id='dashboard-filter'>{returnFilter()}</Row>
+            <Row id='dashboard-list'>{returnList()}</Row>
           </Col>
         </Row>
       </div>
     </div>
-  ) : <LoadingSpinner />);
+  ) : (
+    <LoadingSpinner />
+  );
 };
 
 export default AllDashboard;
