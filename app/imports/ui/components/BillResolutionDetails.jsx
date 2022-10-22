@@ -32,6 +32,16 @@ const BillResolutionDetails = () => {
     return bill.introducer;
   }
 
+  function theRestOfIntroducers() {
+    // eslint-disable-next-line for-direction
+    for (let i = 0; i < bill.introducer.length; i++) {
+      if (bill.introducer[i] === ' ' && i > 3) {
+        return bill.introducer.substring(i);
+      }
+    }
+    return bill.introducer;
+  }
+
   // TODO if bill not found, need to redirect to 404
   return (ready ? (
     <Container className="text-center border border-1 small mb-5">
@@ -150,7 +160,7 @@ const BillResolutionDetails = () => {
                 <Accordion.Item eventKey="0">
                   <Accordion.Header> {introducerShortened()} </Accordion.Header>
                   <Accordion.Body>
-                    {`${bill.introducer} \n**00/00/0000**`}
+                    {`${theRestOfIntroducers()} \n**00/00/0000**`}
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>

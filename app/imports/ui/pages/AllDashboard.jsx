@@ -150,7 +150,7 @@ const AllDashboard = () => {
   const returnList = () => (
     <div style={{ height: '100vh', overflowY: 'auto' }}>
       <Table striped>
-        <thead>
+        <thead style={{ zIndex: 200 }}>
           <tr>
             <th> </th>
             <th>Bill / Resolution</th>
