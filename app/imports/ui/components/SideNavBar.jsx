@@ -57,7 +57,7 @@ const SideNavBar = () => {
           <Nav.Link href="/home" style={{ color: 'black' }}>
             <Icon.HouseDoor /> <b>HOME</b>
           </Nav.Link>
-          <Nav.Link href="#" style={{ color: 'black' }}>
+          <Nav.Link href="/calendar" style={{ color: 'black' }}>
             <Icon.Calendar /> <b>CALENDAR</b>
           </Nav.Link>
           <Nav.Link href="/all-dashboard" style={{ color: 'black' }}>
