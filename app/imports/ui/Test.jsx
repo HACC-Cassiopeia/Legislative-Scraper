@@ -2,20 +2,23 @@ import React, { useState, useEffect } from 'react';
 import scrapers from './utils/scrapers';
 
 const Test = () => {
-  const [data, setData] = useState(null);
-
+  // initial state is empty array otherwise you'll ge an error
+  const [data, setData] = useState([]);
+  // gets data from capitol site
   useEffect(() => {
+    // eslint-disable-next-line no-console
     console.log('rendered');
     scrapers
       .scrapeAll(2022, 'hb')
       .then(initialData => {
-        setData(initialData);
+        setData(initialData.scrapedData);
       });
   }, []);
-  console.log('data', data);
-
+  // eslint-disable-next-line no-console
   return (
-    <h1>{`${data.measures}`}</h1>
+    <div>
+      {data.map(measure => (<div key={measure.code}>{measure.code}</div>))}
+    </div>
   );
 };
 
