@@ -4,6 +4,24 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 
 const app = express();
+/*
+ *   mandatory parameters:
+ *
+ *      year:        2017 (goes back to 2009 as earliest date)
+ *      report:      deadline
+ *      active:      true (necessary only if measuretype is hb or sb)
+ *      rpt_type:
+ *      measuretype: [hb|sb|hr|sr|hcr|scr|gm]
+ *
+ *   Measure Type:
+ *      hb:  House Bills
+ *      sb:  Senate Bills
+ *      hr:  House Resos
+ *      sr:  Senate Resos
+ *      hcr: House Concurrent Resos
+ *      scr: Senate Concurrent Resos
+ *      gm:  Governer's Messages
+ */
 
 app.get('/api/:year/:mt', async (req, res) => {
   const year = req.params.year;
