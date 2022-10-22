@@ -4,8 +4,8 @@ import { Archive, FilePdfFill, Youtube } from 'react-bootstrap-icons';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
-import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
 import LoadingSpinner from './LoadingSpinner';
+import { ScraperData } from '../../api/scraperData/ScraperData';
 
 const BillResolutionDetails = () => {
 
@@ -13,24 +13,14 @@ const BillResolutionDetails = () => {
 
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, bill } = useTracker(() => {
-    const subscription = Meteor.subscribe(SavedMeasures.userPublicationName);
+    const subscription = Meteor.subscribe(ScraperData.userPublicationName);
     const rdy = subscription.ready();
-    const billItem = SavedMeasures.collection.find({ code: _code }).fetch();
+    const billItem = ScraperData.collection.find({ code: _code }).fetch();
     return {
       bill: billItem[0],
       ready: rdy,
     };
   }, false);
-
-  // gets a nice comma-separated list of offices
-  function getOffices() {
-    if (bill.office.length === 1) {
-      return bill.office;
-    }
-    let officeString = bill.office[0];
-    bill.office.forEach(o => { officeString += `, ${o}`; });
-    return officeString;
-  }
 
   return (ready ? (
     <Container className="text-center border border-1 small mb-5">
@@ -89,7 +79,7 @@ const BillResolutionDetails = () => {
           </Row>
           <Row>
             <Col className="py-2">
-              {getOffices()}
+              {/* TODO get offices, need to add this to the saved measures db */}
             </Col>
           </Row>
         </Col>
