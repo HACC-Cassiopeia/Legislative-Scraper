@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Nav } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
 import './style/Component.css';
 import SignUpModal from './SignUpModal';
@@ -33,7 +32,7 @@ const SideNavBar = () => {
     minHeight: '100vh',
     backgroundColor: 'cyan',
     color: 'white',
-    fontSize: '20px',
+    fontSize: '16px',
     textAlign: 'left',
     zIndex: 100,
   };
@@ -88,17 +87,7 @@ const SideNavBar = () => {
             </div>
           ) : (
             <>
-              {' '}
-              <Nav.Link
-                id="navbar-sign-out"
-                as={NavLink}
-                to="/signout"
-                style={{ color: 'black', lineHeight: '29pt' }}
-              >
-                <Icon.Eject />
-                <b>SIGN OUT</b>
-              </Nav.Link>
-              <SignoutCheck />
+              &nbsp; <SignoutCheck />
             </>
           )}
           <Nav.Link />
