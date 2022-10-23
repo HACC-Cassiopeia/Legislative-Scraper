@@ -33,26 +33,6 @@ const AllDashboard = () => {
     document.title = 'DOE Legislative Tracker - View All Bills/Measures';
   });
 
-  /**
-  const returnSideMenu = () => (
-    <Row>
-      <Col className="pt-3">
-        <Button className="py-0" variant="link">
-          Create Tracking Document
-        </Button>
-        <hr />
-        <Button className="py-0" variant="link">
-          Another option here
-        </Button>
-        <hr />
-        <Button className="py-0" variant="link">
-          Idk maybe another option here
-        </Button>
-        <hr />
-      </Col>
-    </Row>
-  ); */
-
   const returnFilter = () => (
     <div className="pb-3">
       <h2 className="pt-3 text-center"><b>Legislative Tracking System 2022: All Bills</b></h2>
