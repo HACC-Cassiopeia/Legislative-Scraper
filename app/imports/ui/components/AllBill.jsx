@@ -31,6 +31,26 @@ const AllBill = ({ bill }) => {
     :
     <Button style={{ backgroundColor: '#418c5c', color: 'white', borderColor: '#297e4b' }}>Save</Button>;
 
+  function introducerShortened() {
+    // eslint-disable-next-line for-direction
+    for (let i = 0; i < bill.introducer.length; i++) {
+      if (bill.introducer[i] === ' ' && i > 3) {
+        return bill.introducer.substring(0, i - 1);
+      }
+    }
+    return bill.introducer;
+  }
+
+  function theRestOfIntroducers() {
+    // eslint-disable-next-line for-direction
+    for (let i = 0; i < bill.introducer.length; i++) {
+      if (bill.introducer[i] === ' ' && i > 3) {
+        return bill.introducer.substring(i);
+      }
+    }
+    return '';
+  }
+
   return (
     <tr>
       <td>
@@ -45,14 +65,17 @@ const AllBill = ({ bill }) => {
           </Accordion.Item>
         </Accordion>
       </td>
-      <td>*offices assigned*</td>
-      <td>*action to be taken*</td>
       <td>{bill.currentReferral}</td>
-      <td>*hearing date/time*</td>
-      <td>*DOE position*</td>
-      <td>*testifier*</td>
-      <td>*internal status*</td>
-      {/* THIS IS AN INTERNALLY TRACKED DOE STATUS, NOT THE STATUS ON THE STATE WEBSITE */}
+      <td>{bill.companion}</td>
+      <td>
+        <Accordion flush className="introducerAccordionList">
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>{introducerShortened()} </Accordion.Header>
+            <Accordion.Body>{theRestOfIntroducers()}</Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      </td>
+      <td>{`(${bill.statusHorS}) ${bill.statusDescription} ${bill.statusDate}`}</td>
     </tr>
   );
 };

@@ -7,6 +7,7 @@ import {
   Dropdown,
   DropdownButton,
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SideNavBar from '../components/SideNavBar';
 import AllBill from '../components/AllBill';
@@ -35,7 +36,8 @@ const AllDashboard = () => {
 
   const returnFilter = () => (
     <div className="pb-3">
-      <h2 className="pt-3 text-center"><b>Legislative Tracking System 2022: All Bills</b></h2>
+      <h2 className="pt-3 text-center"><b>2022: All House Bills</b></h2>
+      <Link className="d-flex justify-content-center pb-2" to="/view/DOE">View DOE-Tracked Bill/Measures</Link>
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Filter Options</Accordion.Header>
@@ -131,12 +133,9 @@ const AllDashboard = () => {
           <tr>
             <th>DOE DB</th>
             <th>Bill / Resolution</th>
-            <th>Office</th>
-            <th>Action</th>
             <th>Committee</th>
-            <th>Hearing</th>
-            <th>Position</th>
-            <th>Testifier</th>
+            <th>Companion</th>
+            <th>Introducer</th>
             <th>Status</th>
           </tr>
         </thead>

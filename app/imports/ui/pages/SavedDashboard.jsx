@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Accordion, Col, Container, Dropdown, DropdownButton, Row, Table } from 'react-bootstrap';
+import { Accordion, Col, Dropdown, DropdownButton, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Link } from 'react-router-dom';
 import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
 import SavedBill from '../components/SavedBill';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -24,8 +25,9 @@ const Dashboard = () => {
   }, []);
 
   const returnFilter = () => (
-    <Container className="pb-3">
-      <h2>Legislative Tracking System 2022: Saved Bills</h2>
+    <div className="pb-3">
+      <h2 className="pt-3 text-center"><b>DOE-Tracked Bills and Measures</b></h2>
+      <Link className="d-flex justify-content-center pb-2" to="/view/all">View All Bill/Measures</Link>
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Filter Options</Accordion.Header>
@@ -111,7 +113,7 @@ const Dashboard = () => {
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
-    </Container>
+    </div>
   );
 
   const returnList = () => (
