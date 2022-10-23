@@ -7,12 +7,10 @@ import {
   Dropdown,
   DropdownButton,
 } from 'react-bootstrap';
-import { Meteor } from 'meteor/meteor';
-import { useTracker } from 'meteor/react-meteor-data';
-import { ScraperData } from '../../api/scraperData/ScraperData';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SideNavBar from '../components/SideNavBar';
 import AllBill from '../components/AllBill';
+import scrapers from '../utils/scrapers';
 
 const AllDashboard = () => {
   /* states for item filtering */
@@ -20,24 +18,19 @@ const AllDashboard = () => {
   const [action, setAction] = useState('Select a Status');
   const [status, setStatus] = useState('Select an Action');
 
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { ready, bills } = useTracker(() => {
-    // Note that this subscription will get cleaned up
-    // when your component is unmounted or deps change.
-    // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(ScraperData.userPublicationName);
-    // Determine if the subscription is ready
-    const rdy = subscription.ready();
-    // Get the Stuff documents
-    const billItems = ScraperData.collection.find({}).fetch();
-    return {
-      bills: billItems,
-      ready: rdy,
-    };
-  }, []);
+  const [measures, setMeasures] = useState([]);
+
+  // TODO get year and type from filters
+  useEffect(() => {
+    scrapers
+      .scrapeAll(2022, 'hb')
+      .then(initialMeasures => {
+        setMeasures(initialMeasures.scrapedData);
+      });
+  });
 
   useEffect(() => {
-    document.title = 'DOE Legislative Tracker - View Bills/Measures';
+    document.title = 'DOE Legislative Tracker - View All Bills/Measures';
   });
 
   /**
@@ -168,7 +161,8 @@ const AllDashboard = () => {
           </tr>
         </thead>
         <tbody>
-          { ready ? bills.map((bill) => <AllBill key={bill._id} bill={bill} />) : <LoadingSpinner />}
+          {/* eslint-disable-next-line meteor/no-session */}
+          { measures.length === 0 ? <LoadingSpinner /> : measures.map((bill) => <AllBill key={bill._id} bill={bill} />) }
         </tbody>
       </Table>
     </div>

@@ -37,8 +37,8 @@ const App = () => (
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
-        <Route path="/all-dashboard" element={<AllDashboard />} />
-        <Route path="/saved-dashboard" element={<SavedDashboard />} />
+        <Route path="/view/all" element={<AllDashboard />} />
+        <Route path="/view/doe" element={<SavedDashboard />} />
         <Route path="/add-testimony" element={<AddTestimony />} />
         <Route path="/view/:_code" element={<BillResolutionTracker />} />
         <Route path="/test" element={<Test />} />
