@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
 import { Button, Modal } from 'react-bootstrap';
-
+// added
 const SignoutCheck = () => {
   const [show, setShow] = useState(false);
 

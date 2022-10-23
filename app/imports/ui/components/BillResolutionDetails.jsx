@@ -7,6 +7,7 @@ import { Meteor } from 'meteor/meteor';
 import LoadingSpinner from './LoadingSpinner';
 import { ScraperData } from '../../api/scraperData/ScraperData';
 
+// added
 const BillResolutionDetails = () => {
 
   const { _code } = useParams();

@@ -12,7 +12,7 @@ import {
   SubmitField,
   TextField,
 } from 'uniforms-bootstrap5';
-
+// added
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
  */

@@ -10,7 +10,7 @@ import SignoutCheck from './SignoutCheck';
 import MobileSignOutCheck from './MobileSignOutCheck';
 import MobileSignInModal from './MobileSignInModal';
 import MobileSignUpModal from './MobileSignUpModal';
-
+// added
 const SideNavBar = () => {
   // the width of the screen using React useEffect
   const [width, setWidth] = useState(window.innerWidth);

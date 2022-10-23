@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
+// added
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const SavedBill = ({ bill }) => (
   <tr>

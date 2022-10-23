@@ -11,7 +11,7 @@ import {
   SubmitField,
   TextField,
 } from 'uniforms-bootstrap5';
-
+// added
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
  * Authentication errors modify the component’s state to be displayed

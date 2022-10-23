@@ -5,7 +5,7 @@ import { Star, StarFill } from 'react-bootstrap-icons';
 import { Accordion, Button } from 'react-bootstrap';
 
 const selected = false; // TODO will need to load from db
-
+// added
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const AllBill = ({ bill }) => (
   <tr>
