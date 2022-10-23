@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Nav, Button } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
 import './style/Component.css';
+import SignUpModal from './SignUpModal';
+import SignInModal from './SignInModal';
+import SignoutCheck from './SignoutCheck';
+import MobileSignOutCheck from './MobileSignOutCheck';
+import MobileSignInModal from './MobileSignInModal';
+import MobileSignUpModal from './MobileSignUpModal';
 
 const SideNavBar = () => {
   // the width of the screen using React useEffect
@@ -34,7 +40,7 @@ const SideNavBar = () => {
 
   const mobileSideBarStyle = {
     position: 'fixed',
-    maxWidth: '20%',
+    minWidth: '15%',
     minHeight: '100vh',
     backgroundColor: 'cyan',
     color: 'white',
@@ -61,6 +67,7 @@ const SideNavBar = () => {
           <Nav.Link href="/all-dashboard" style={{ color: 'black' }}>
             <Icon.Clipboard /> <b>DASHBOARD</b>
           </Nav.Link>
+
           {currentUser
             ? [
               <>
@@ -70,12 +77,30 @@ const SideNavBar = () => {
                 <Nav.Link href="/calendar" style={{ color: 'black' }}>
                   <Icon.Calendar /> <b>CALENDAR</b>
                 </Nav.Link>
-                <Nav.Link id="navbar-sign-out" as={NavLink} to="/signout">
-                  SIGN OUT
-                </Nav.Link>
               </>,
             ]
             : ''}
+          {currentUser === '' ? (
+            <div style={{ textAlign: 'center', lineHeight: '45pt' }}>
+              <SignInModal />
+              <br />
+              <SignUpModal />
+            </div>
+          ) : (
+            <>
+              {' '}
+              <Nav.Link
+                id="navbar-sign-out"
+                as={NavLink}
+                to="/signout"
+                style={{ color: 'black', lineHeight: '29pt' }}
+              >
+                <Icon.Eject />
+                <b>SIGN OUT</b>
+              </Nav.Link>
+              <SignoutCheck />
+            </>
+          )}
           <Nav.Link />
         </Nav.Item>
       </Nav>
@@ -84,23 +109,34 @@ const SideNavBar = () => {
   return (
     <Nav style={mobileSideBarStyle} activeKey="/home">
       <Nav.Item>
-        <Nav.Link href="#" style={{ color: 'black' }}>
-          <Icon.Inbox />
-        </Nav.Link>
-        <Nav.Link to="/home" style={{ color: 'black' }}>
+        <Nav.Link href="/" style={{ color: 'black' }}>
           <Icon.HouseDoor />
         </Nav.Link>
-        <Nav.Link href="#" style={{ color: 'black' }}>
-          <Icon.Calendar />
-        </Nav.Link>
-        <Nav.Link href="#" style={{ color: 'black' }}>
+        <Nav.Link href="/all-dashboard" style={{ color: 'black' }}>
           <Icon.Clipboard />
         </Nav.Link>
-        <Nav.Link>
-          <Button>
-            <Icon.PencilSquare />
-          </Button>
-        </Nav.Link>
+        {currentUser
+          ? [
+            <>
+              <Nav.Link href="/home" style={{ color: 'black' }}>
+                <Icon.Inbox />
+              </Nav.Link>
+              <Nav.Link href="/calendar" style={{ color: 'black' }}>
+                <Icon.Calendar />
+              </Nav.Link>
+            </>,
+          ]
+          : ''}
+        {currentUser === '' ? (
+          <div style={{ textAlign: 'center', lineHeight: '45pt' }}>
+            <MobileSignInModal />
+            <br />
+            <MobileSignUpModal />
+          </div>
+        ) : (
+          <MobileSignOutCheck />
+        )}
+        <Nav.Link />
       </Nav.Item>
     </Nav>
   );

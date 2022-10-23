@@ -134,7 +134,15 @@ h2 {
 }
 
 #mobileMainBody {
-  margin-left: 25%;
-  max-width: 65vw;
+  margin-left: 20%;
+  max-width: 60vw;
   z-index: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  #mainBody {
+    margin-left: 20%;
+    z-index: 0;
+    max-width: 60vw;
+  }
 }
