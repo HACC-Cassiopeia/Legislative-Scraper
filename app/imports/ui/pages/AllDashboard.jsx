@@ -129,7 +129,7 @@ const AllDashboard = () => {
       <Table striped>
         <thead style={{ zIndex: 200 }}>
           <tr>
-            <th> </th>
+            <th>DOE DB</th>
             <th>Bill / Resolution</th>
             <th>Office</th>
             <th>Action</th>
@@ -141,10 +141,10 @@ const AllDashboard = () => {
           </tr>
         </thead>
         <tbody>
-          {/* eslint-disable-next-line meteor/no-session */}
-          { measures.length === 0 ? <LoadingSpinner /> : measures.map((bill) => <AllBill key={bill._id} bill={bill} />) }
+          { measures.length === 0 ? ' ' : measures.map((bill) => <AllBill key={bill._id} bill={bill} />) }
         </tbody>
       </Table>
+      { measures.length === 0 ? <LoadingSpinner /> : ' ' }
     </div>
   );
 

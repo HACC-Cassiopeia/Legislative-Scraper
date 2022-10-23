@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
-import { Star, StarFill } from 'react-bootstrap-icons';
+import { CloudCheckFill } from 'react-bootstrap-icons';
 import { Accordion, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
@@ -26,14 +26,15 @@ const AllBill = ({ bill }) => {
     };
   }, []);
 
-  const checkSaved = saved ? <StarFill /> : <Star />;
+  const checkSaved = saved ?
+    <div style={{ textAlign: 'center', fontSize: '20px' }}><CloudCheckFill /></div>
+    :
+    <Button style={{ backgroundColor: '#418c5c', color: 'white', borderColor: '#297e4b' }}>Save</Button>;
 
   return (
     <tr>
-      <td className="p-3">
-        <Button className="p-0 starButton">
-          {ready ? checkSaved : <SmallerSpinner />}
-        </Button>
+      <td>
+        {ready ? checkSaved : <SmallerSpinner class="d-flex justify-content-center" />}
       </td>
       <td>
         <div style={{ fontSize: '20px' }}><Link to={`/view/${bill.code}`}><strong>{bill.code}</strong></Link></div>

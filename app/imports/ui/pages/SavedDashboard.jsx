@@ -13,15 +13,9 @@ const Dashboard = () => {
   const [action, setAction] = useState('Select a Status');
   const [status, setStatus] = useState('Select an Action');
 
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, bills } = useTracker(() => {
-    // Note that this subscription will get cleaned up
-    // when your component is unmounted or deps change.
-    // Get access to Stuff documents.
     const subscription = Meteor.subscribe(SavedMeasures.userPublicationName);
-    // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Get the Stuff documents
     const billItems = SavedMeasures.collection.find({}).fetch();
     return {
       bills: billItems,
@@ -121,27 +115,25 @@ const Dashboard = () => {
   );
 
   const returnList = () => (
-    <Container className="py-3">
-      <div style={{ height: '100vh', overflowY: 'auto' }}>
-        <Table striped>
-          <thead>
-            <tr>
-              <td>Code</td>
-              <td>Report</td>
-              <td>Description</td>
-              <td>Office</td>
-              <td>Status</td>
-              <td>Date</td>
-              <td>Introducer</td>
-            </tr>
-          </thead>
-          <tbody>
-            {bills.map((bill) => <SavedBill key={bill._id} bill={bill} />)}
-          </tbody>
-        </Table>
-      </div>
-
-    </Container>
+    <div style={{ height: '100vh', overflowY: 'auto' }}>
+      <Table striped>
+        <thead style={{ zIndex: 200 }}>
+          <tr>
+            <th>Bill / Resolution</th>
+            <th>Office</th>
+            <th>Action</th>
+            <th>Committee</th>
+            <th>Hearing</th>
+            <th>Position</th>
+            <th>Testifier</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          { bills.length === 0 ? <LoadingSpinner /> : bills.map((bill) => <SavedBill key={bill._id} bill={bill} />) }
+        </tbody>
+      </Table>
+    </div>
   );
 
   return (ready ? (

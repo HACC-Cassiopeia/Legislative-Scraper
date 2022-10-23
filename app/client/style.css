@@ -116,26 +116,13 @@ h2 {
   padding: 0 !important;
 }
 
-.starButton {
-  background-color: transparent !important;
-  color: black !important;
-  border-width: 0 !important;
-}
-
-#navBar {
-  width: 15%;
-  color: #418c5c;
-}
-
 #mainBody {
-  margin-left: 20%;
+  margin-left: 14%;
   z-index: 0;
-  max-width: 65vw;
 }
 
 #mobileMainBody {
   margin-left: 25%;
-  max-width: 60vw;
   z-index: 0;
 }
 
