@@ -11,4 +11,14 @@ const scrapeAll = async (year, mt) => {
   }
 };
 
-export default { scrapeAll };
+const scrapeUpcomingHearings = async () => {
+  try {
+    const request = await axios.get('/api/scrapeUpcomingHearings');
+    return request.data;
+  } catch {
+    console.log('error!');
+    return null;
+  }
+};
+
+export default { scrapeAll, scrapeUpcomingHearings };
