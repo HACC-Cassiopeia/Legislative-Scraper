@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { Container } from 'react-bootstrap';
-
+// added
 function getDate(dayString) {
   const today = new Date();
   const year = today.getFullYear().toString();

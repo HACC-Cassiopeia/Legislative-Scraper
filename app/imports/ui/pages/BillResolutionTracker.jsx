@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { PencilSquare, FileEarmarkPlusFill, BoxArrowInDown } from 'react-bootstrap-icons';
 import BillResolutionDetails from '../components/BillResolutionDetails';
-
+// added
 const navBarStyle = {
   backgroundColor: '#FFFFFF',
   borderBottom: '2px solid #DDDDDD',

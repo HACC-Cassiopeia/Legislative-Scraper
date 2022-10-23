@@ -7,7 +7,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { jsPDF } from 'jspdf';
 import { Testimonies } from '../../api/testimony/Testimony';
-
+// ADDED
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   committeeChair: String,

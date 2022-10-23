@@ -6,7 +6,7 @@ import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
 import SavedBill from '../components/SavedBill';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SideNavBar from '../components/SideNavBar';
-
+// added
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const Dashboard = () => {
   const [office, setOffice] = useState('Select an Office');

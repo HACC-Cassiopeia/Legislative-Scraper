@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Row, Col, Button, Container } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 import SideNavBar from '../components/SideNavBar';
-
+// added
 const Home = () => {
   const mainBodyStyle = {
     marginLeft: '25%',

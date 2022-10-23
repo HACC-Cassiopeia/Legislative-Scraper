@@ -2,10 +2,10 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Stuffs } from '../../api/stuff/Stuff';
-import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
-import StuffItem from '../components/oldstuff/StuffItem';
-import LoadingSpinner from '../components/LoadingSpinner';
+import { Stuffs } from '../../../api/stuff/Stuff';
+import { SavedMeasures } from '../../../api/savedMeasures/SavedMeasures';
+import StuffItem from '../../components/oldstuff/StuffItem';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const ListStuff = () => {
