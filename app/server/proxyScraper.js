@@ -99,4 +99,59 @@ app.get('/api/scrapeAll/:year/:mt', async (req, res) => {
   res.status(200).json({ scrapedData });
 });
 
+app.get('/api/scrapeUpcomingHearings', async (req, res) => {
+  const url = 'https://www.capitol.hawaii.gov/upcominghearings.aspx';
+  const response = await axios.get(url);
+  const html = response.data;
+  const $ = cheerio.load(html);
+  const upcomingHearings = [];
+  let index = 1;
+
+  const getIndex = (num) => (num < 10 ? `0${index}` : index);
+
+  $('table#ctl00_ContentPlaceHolderCol1_GridView1 > tbody > tr', html)
+    .has('td') // checks if 'td' element is inside of 'tr' element
+    .each(function () {
+      index += 1;
+
+      const committee = $(this)
+        .find(`span#ctl00_ContentPlaceHolderCol1_GridView1_ctl${getIndex(index)}_Label17`)
+        .first()
+        .text();
+      const measure = $(this)
+        .find(`#ctl00_ContentPlaceHolderCol1_GridView1_ctl${getIndex(index)}_HyperLink`)
+        .text();
+      const dateTime = $(this)
+        .find(`#ctl00_ContentPlaceHolderCol1_GridView1_ctl${getIndex(index)}_Label27`)
+        .first()
+        .text();
+      const room = $(this)
+        .find(`#ctl00_ContentPlaceHolderCol1_GridView1_ctl${getIndex(index)}_Label27`)
+        .last()
+        .text();
+      const noticeURL = $(this)
+        .find(`#ctl00_ContentPlaceHolderCol1_GridView1_ctl${getIndex(index)}_HyperLink2`)
+        .attr('href');
+      const noticePdfURL = $(this)
+        .find(`#ctl00_ContentPlaceHolderCol1_GridView1_ctl${getIndex(index)}_HyperLink3`)
+        .attr('href');
+      const youtubeURL = $(this)
+        .find(`#ctl00_ContentPlaceHolderCol1_GridView1_ctl${getIndex(index)}_streamLink`)
+        .attr('href');
+
+      upcomingHearings.push({
+        committee: committee,
+        dateTime: dateTime,
+        room: room,
+        measure: measure,
+        noticeURL: noticeURL,
+        noticePdfURL: noticePdfURL,
+        youtubeURL: youtubeURL,
+      });
+    });
+
+  res.status(200).json({ upcomingHearings });
+
+});
+
 WebApp.connectHandlers.use(app);
