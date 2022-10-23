@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// import { Meteor } from 'meteor/meteor';
-// import { useTracker } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Nav, Button } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
-import SignoutCheck from './SignoutCheck';
-import MobileSignoutCheck from './MobileSignOutCheck';
 import './style/Component.css';
 
 const SideNavBar = () => {
@@ -24,13 +23,13 @@ const SideNavBar = () => {
 
   const sideBarStyle = {
     position: 'fixed',
-    width: '15%',
+    maxWidth: '25%',
     minHeight: '100vh',
     backgroundColor: 'cyan',
     color: 'white',
     fontSize: '20px',
     textAlign: 'left',
-    zIndex: 10,
+    zIndex: 100,
   };
 
   const mobileSideBarStyle = {
@@ -44,44 +43,46 @@ const SideNavBar = () => {
     zIndex: 10,
   };
 
+  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  const { currentUser } = useTracker(
+    () => ({
+      currentUser: Meteor.user() ? Meteor.user().username : '',
+    }),
+    [],
+  );
+
   if (width > breakPoint) {
     return (
-      <Nav
-        style={sideBarStyle}
-        activeKey="/home"
-      >
+      <Nav style={sideBarStyle} activeKey="/home">
         <Nav.Item>
-          <Nav.Link href="#" style={{ color: 'black' }}>
-            <Icon.Inbox /> <b>INBOX </b>
-          </Nav.Link>
-          <Nav.Link href="/home" style={{ color: 'black' }}>
+          <Nav.Link href="/" style={{ color: 'black' }}>
             <Icon.HouseDoor /> <b>HOME</b>
-          </Nav.Link>
-          <Nav.Link href="/calendar" style={{ color: 'black' }}>
-            <Icon.Calendar /> <b>CALENDAR</b>
           </Nav.Link>
           <Nav.Link href="/all-dashboard" style={{ color: 'black' }}>
             <Icon.Clipboard /> <b>DASHBOARD</b>
           </Nav.Link>
-          <Nav.Link>
-            <Button>
-              <b>
-                <Icon.PencilSquare /> &nbsp; CREATE
-              </b>
-            </Button>
-          </Nav.Link>
-          <Nav.Link>
-            <SignoutCheck />
-          </Nav.Link>
+          {currentUser
+            ? [
+              <>
+                <Nav.Link href="/home" style={{ color: 'black' }}>
+                  <Icon.Inbox /> <b>NOTIFICATION</b>
+                </Nav.Link>
+                <Nav.Link href="/calendar" style={{ color: 'black' }}>
+                  <Icon.Calendar /> <b>CALENDAR</b>
+                </Nav.Link>
+                <Nav.Link id="navbar-sign-out" as={NavLink} to="/signout">
+                  SIGN OUT
+                </Nav.Link>
+              </>,
+            ]
+            : ''}
+          <Nav.Link />
         </Nav.Item>
       </Nav>
     );
   }
   return (
-    <Nav
-      style={mobileSideBarStyle}
-      activeKey="/home"
-    >
+    <Nav style={mobileSideBarStyle} activeKey="/home">
       <Nav.Item>
         <Nav.Link href="#" style={{ color: 'black' }}>
           <Icon.Inbox />
@@ -99,9 +100,6 @@ const SideNavBar = () => {
           <Button>
             <Icon.PencilSquare />
           </Button>
-        </Nav.Link>
-        <Nav.Link>
-          <MobileSignoutCheck />
         </Nav.Link>
       </Nav.Item>
     </Nav>

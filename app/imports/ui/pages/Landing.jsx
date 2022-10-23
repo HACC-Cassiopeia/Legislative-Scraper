@@ -1,10 +1,12 @@
 import React from 'react';
-import { Col, Container, Image, Row, Nav, Navbar } from 'react-bootstrap';
+import { Col, Image, Row, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
-import SignUpModal from '../components/SignUpModal';
-import SignInModal from '../components/SignInModal';
 
+const landingBody = {
+  marginLeft: '15%',
+  fontSize: '16px',
+};
 const landingStyleA = {
   backgroudnColor: 'whitesmoke',
   textAlign: 'center',
@@ -24,8 +26,6 @@ const messageStyle = {
 };
 
 const introMessageStyle = {
-  marginTop: '3%',
-  marginBottom: '3%',
   textAlign: 'center',
   fontWeight: 'bolder',
   color: 'black',
@@ -33,21 +33,8 @@ const introMessageStyle = {
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
-  <div>
+  <div style={landingBody}>
     <div className="headerTopTitle">
-      <Navbar style={{ backgroundColor: 'transparent' }}>
-        <Container>
-          <Navbar.Brand>
-            <h2>Legislative Tracker</h2>
-          </Navbar.Brand>
-          <Nav className="justify-content-end">
-            <SignInModal />
-            &nbsp;
-            <SignUpModal />
-          </Nav>
-        </Container>
-      </Navbar>
-
       <div style={introMessageStyle}>
         <h3>Track & Monitor your proposals</h3>
         <p>

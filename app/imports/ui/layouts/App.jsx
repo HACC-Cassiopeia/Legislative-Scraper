@@ -25,11 +25,13 @@ import BillResolutionTracker from '../pages/BillResolutionTracker';
 import AddTestimony from '../pages/AddTestimony';
 import Test from '../Test';
 import Calendar from '../pages/Calendar';
+import SideNavBar from '../components/SideNavBar';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
   <Router>
     <div className="d-flex flex-column min-vh-100">
+      <SideNavBar />
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/signin" element={<SignIn />} />

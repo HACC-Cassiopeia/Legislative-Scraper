@@ -31,18 +31,20 @@ const Calendar = () => {
   });
 
   return (
-    <Container className="p-lg-5">
-      <FullCalendar
-        defaultView="dayGridMonth"
-        header={{
-          left: 'prev,next',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay',
-        }}
-        plugins={[dayGridPlugin]}
-        events={events}
-      />
-    </Container>
+    <div id="mainBody">
+      <Container className="p-lg-5">
+        <FullCalendar
+          defaultView="dayGridMonth"
+          header={{
+            left: 'prev,next',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay',
+          }}
+          plugins={[dayGridPlugin]}
+          events={events}
+        />
+      </Container>
+    </div>
   );
 };
 
