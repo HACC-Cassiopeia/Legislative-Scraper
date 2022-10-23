@@ -28,8 +28,13 @@ const AllBill = ({ bill }) => {
 
   const checkSaved = saved ?
     <div style={{ textAlign: 'center', fontSize: '20px' }}><CloudCheckFill /></div>
-    :
-    <Button style={{ backgroundColor: '#418c5c', color: 'white', borderColor: '#297e4b' }}>Save</Button>;
+    : (
+      <Button
+        style={{ backgroundColor: '#418c5c', color: 'white', borderColor: '#297e4b' }}
+        onClick={() => SavedMeasures.collection.insert(bill)}
+      >Save
+      </Button>
+    );
 
   function introducerShortened() {
     // eslint-disable-next-line for-direction
