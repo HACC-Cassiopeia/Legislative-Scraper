@@ -23,7 +23,7 @@ const scrapeUpcomingHearings = async () => {
 
 const scrapeBillDetails = async (bt, bn, year) => {
   try {
-    const request = await axios.get(`/api/scrapeBillDetails/${bt}/${bn}/${year}`)
+    const request = await axios.get(`/api/scrapeBillDetails/${bt}/${bn}/${year}`);
     return request.data;
   } catch {
     return (() => console.log('error! invalid request'));
