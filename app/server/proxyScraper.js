@@ -156,7 +156,7 @@ app.get('/api/scrapeUpcomingHearings', async (req, res) => {
 });
 /* ************************************************************************************* */
 // gets the bill details via url
-app.get('/api/billDetails/:bt/:bn/:year', async (req, res) => {
+app.get('/api/scrapeBillDetails/:bt/:bn/:year', async (req, res) => {
   const bt = req.params.bt;
   const bn = req.params.bn;
   const year = req.params.year;

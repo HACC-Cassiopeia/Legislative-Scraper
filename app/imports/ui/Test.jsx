@@ -10,6 +10,7 @@ const Test = () => {
   // initial state is empty array
   const [measures, setMeasures] = useState([]);
   const [hearings, setHearings] = useState([]);
+  const [billDetails, setBillDetails] = useState({});
   // gets data from capitol site
   useEffect(() => {
     // eslint-disable-next-line no-console
@@ -24,18 +25,26 @@ const Test = () => {
       .then(initialHearings => {
         setHearings(initialHearings.upcomingHearings);
       });
+    scrapers
+      .scrapeBillDetails('HB', '137', 2022)
+      .then(initialBillDetails => {
+        setBillDetails(initialBillDetails);
+      });
   }, []);
   // eslint-disable-next-line no-console
   return (
-    <>
+    <div className="d-flex flex-column align-items-center p-3 gap-3">
       <div>
         Measures: {measures.length}
       </div>
       <div>
         Upcoming hearings:
-        {hearings.map(hearing => (<div>{hearing.committee} , {hearing.dateTime}</div>))}
+        {hearings.map(hearing => (<div key={hearing.committee}>{hearing.committee} , {hearing.dateTime}</div>))}
       </div>
-    </>
+      <div>
+        Bill HB137: {billDetails.lastStatusText}
+      </div>
+    </div>
   );
 };
 
