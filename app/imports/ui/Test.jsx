@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 import scrapers from './utils/scrapers';
 
 /*
@@ -11,6 +12,7 @@ const Test = () => {
   const [measures, setMeasures] = useState([]);
   const [hearings, setHearings] = useState([]);
   const [billDetails, setBillDetails] = useState({});
+  const [testButton, setTestButton] = useState([]);
   // gets data from capitol site
   useEffect(() => {
     // eslint-disable-next-line no-console
@@ -44,6 +46,16 @@ const Test = () => {
       <div>
         Bill HB137: {billDetails.lastStatusText}
       </div>
+      <Button onClick={() => {
+        console.log('pressed');
+        scrapers
+          .scrapeAll('2022', 'hb')
+          .then(initialData => setTestButton(initialData.scrapedData));
+      }}
+      >
+        Press Me
+      </Button>
+      <div> TestButton length: {testButton.length}</div>
     </div>
   );
 };
