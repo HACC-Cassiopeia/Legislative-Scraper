@@ -140,7 +140,7 @@ const Dashboard = () => {
 
   return (ready ? (
     <div>
-      <SideNavBar />
+      <SideNavBar id="nav" />
       <div id="mainBody">
         <Row id="dashboard-screen">
           <Col>
