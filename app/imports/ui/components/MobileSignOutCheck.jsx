@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Meteor } from 'meteor/meteor';
 import { NavLink } from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
 import { Button, Modal } from 'react-bootstrap';
@@ -28,12 +27,7 @@ const MobileSignoutCheck = () => {
           <Button variant="danger" onClick={handleClose}>
             NO
           </Button>
-          <Button
-            variant="success"
-            onClick={Meteor.logout()}
-            as={NavLink}
-            to="/"
-          >
+          <Button variant="success" as={NavLink} to="/signout">
             YES
           </Button>
         </Modal.Footer>

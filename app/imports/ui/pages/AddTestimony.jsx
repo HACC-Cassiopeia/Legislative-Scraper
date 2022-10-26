@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
@@ -24,6 +24,10 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddStuff page for adding a document. */
 const AddTestimony = () => {
+
+  useEffect(() => {
+    document.title = 'DOE Legislative Tracker - Add Testimony';
+  });
 
   // On submit, insert the data.
   const submit = (data, formRef) => {

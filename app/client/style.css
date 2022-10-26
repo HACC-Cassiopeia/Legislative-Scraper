@@ -65,7 +65,7 @@ h2 {
 }
 
 .headerTopTitle {
-  background-image: url("../public/images/landing.png");
+  background-image: url('../public/images/landing.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -74,25 +74,78 @@ h2 {
   min-height: 35vh;
 }
 
-#billTitle {
-  background-color: #ddf3dd;
+/*  not sure how to do the bootstrap attributes (eg --bs-accordion-active-bg) in the .jsx files so these stay here for now -Rob */
+.introducerAccordion .accordion-button {
+  --bs-accordion-active-color: black;
+  --bs-accordion-active-bg: transparent;
+  font-size: small;
+  text-align: center !important;
+  width: 75%;
+  margin: 0 auto;
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
-#billStatus {
-  background-color: #f5f5f5;
+.billAccordion .accordion-body {
+  --bs-accordion-active-color: black;
+  --bs-accordion-active-bg: transparent;
+  z-index: 0;
+  margin: 0 auto;
+  font-size: 13px;
+  padding: 0;
 }
 
-.fakeLink4Rob {
-  color: #6f5cf3;
-  text-decoration-line: underline;
+.billAccordion .accordion-button {
+  --bs-accordion-active-color: black;
+  --bs-accordion-active-bg: transparent;
+  z-index: 0;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.introducerAccordionList .accordion-body {
+  --bs-accordion-active-color: black;
+  --bs-accordion-active-bg: transparent;
+  z-index: 0;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.introducerAccordionList .accordion-button {
+  --bs-accordion-active-color: black;
+  --bs-accordion-active-bg: transparent;
+  z-index: 0;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.accordion {
+  --bs-accordion-bg: transparent !important;
+}
+
+.accordion-button:focus {
+  --bs-accordion-btn-focus-border-color: transparent;
+  --bs-accordion-btn-focus-box-shadow: transparent;
+}
+
+.accordion-body {
+  padding: 0 !important;
 }
 
 #mainBody {
-  margin-left: 25%;
-  max-width: 65vw;
+  margin-left: 14%;
+  z-index: 0;
 }
 
 #mobileMainBody {
   margin-left: 25%;
-  max-width: 65vw;
+  z-index: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  #mainBody {
+    margin-left: 20%;
+    z-index: 0;
+    max-width: 60vw;
+  }
 }

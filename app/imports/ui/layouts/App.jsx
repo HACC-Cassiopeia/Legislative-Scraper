@@ -23,20 +23,26 @@ import SavedDashboard from '../pages/SavedDashboard';
 import NotAuthorized from '../pages/NotAuthorized';
 import BillResolutionTracker from '../pages/BillResolutionTracker';
 import AddTestimony from '../pages/AddTestimony';
+import Test from '../Test';
+import Calendar from '../pages/Calendar';
+import SideNavBar from '../components/SideNavBar';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
   <Router>
     <div className="d-flex flex-column min-vh-100">
+      <SideNavBar />
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
-        <Route path="/all-dashboard" element={<AllDashboard />} />
-        <Route path="/saved-dashboard" element={<SavedDashboard />} />
+        <Route path="/view/all" element={<AllDashboard />} />
+        <Route path="/view/doe" element={<SavedDashboard />} />
         <Route path="/add-testimony" element={<AddTestimony />} />
         <Route path="/view/:_code" element={<BillResolutionTracker />} />
+        <Route path="/test" element={<Test />} />
+        <Route path="/calendar" element={<Calendar />} />
         <Route
           path="/home"
           element={(

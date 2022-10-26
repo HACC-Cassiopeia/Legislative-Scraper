@@ -1,11 +1,11 @@
-import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Container, Row, Col, Card, Accordion } from 'react-bootstrap';
 import { Archive, FilePdfFill, Youtube } from 'react-bootstrap-icons';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
-import { SavedMeasures } from '../../api/savedMeasures/SavedMeasures';
 import LoadingSpinner from './LoadingSpinner';
+import { ScraperData } from '../../api/scraperData/ScraperData';
 
 const BillResolutionDetails = () => {
 
@@ -13,36 +13,65 @@ const BillResolutionDetails = () => {
 
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, bill } = useTracker(() => {
-    const subscription = Meteor.subscribe(SavedMeasures.userPublicationName);
+    const subscription = Meteor.subscribe(ScraperData.userPublicationName);
     const rdy = subscription.ready();
-    const billItem = SavedMeasures.collection.find({ code: _code }).fetch();
+    const billItem = ScraperData.collection.find({ code: _code }).fetch();
     return {
       bill: billItem[0],
       ready: rdy,
     };
   }, false);
 
-  // gets a nice comma-separated list of offices
-  function getOffices() {
-    if (bill.office.length === 1) {
-      return bill.office;
+  useEffect(() => {
+    document.title = `DOE Legislative Tracker - ${_code}`;
+  });
+
+  // TODO change depending on bill status
+  const billStatusStyle = {
+    backgroundColor: '#f5f5f5',
+  };
+
+  const fakeLink4Rob = {
+    color: '#6f5cf3',
+    textDecorationLine: 'underline',
+  };
+
+  function introducerShortened() {
+    // eslint-disable-next-line for-direction
+    for (let i = 0; i < bill.introducer.length; i++) {
+      if (bill.introducer[i] === ' ' && i > 3) {
+        return bill.introducer.substring(0, i - 1);
+      }
     }
-    let officeString = bill.office[0];
-    bill.office.forEach(o => { officeString += `, ${o}`; });
-    return officeString;
+    return bill.introducer;
   }
 
+  function theRestOfIntroducers() {
+    // eslint-disable-next-line for-direction
+    for (let i = 0; i < bill.introducer.length; i++) {
+      if (bill.introducer[i] === ' ' && i > 3) {
+        return bill.introducer.substring(i);
+      }
+    }
+    return bill.introducer;
+  }
+
+  // TODO if bill not found, need to redirect to 404
   return (ready ? (
     <Container className="text-center border border-1 small mb-5">
-      <Row id="billTitle">
+      <Row style={{ backgroundColor: '#ddf3dd' }}>
         <Col>
-          {/* empty column for alignment */}
+          {/* EMPTY COL FOR ALIGNMENT */}
         </Col>
         <Col>
-          <h3 className="pt-2"><b>{bill.code}</b></h3>
+          <h3 className="pt-2">
+            <a href={bill.measureArchiveUrl} target="_blank" rel="noreferrer"><b>{bill.code}</b></a>
+            &nbsp;
+            <a aria-label="PDF link" href={bill.measurePdfUrl} target="_blank" rel="noreferrer"><FilePdfFill className="pb-1" /></a>
+          </h3>
         </Col>
         <Col className="text-end">
-          <Card id="billStatus" className="p-2 m-1 float-end flex-row">
+          <Card style={billStatusStyle} className="p-2 m-1 float-end flex-row">
             <Archive className="m-1 me-2" />
             {/* TODO Status? */}
             Deferred/Inactive
@@ -89,7 +118,7 @@ const BillResolutionDetails = () => {
           </Row>
           <Row>
             <Col className="py-2">
-              {getOffices()}
+              {/* TODO get offices, need to add this to the saved measures db */}
             </Col>
           </Row>
         </Col>
@@ -141,10 +170,15 @@ const BillResolutionDetails = () => {
           </Row>
           <Row className="py-2">
             <Col>
-              {/* TODO not sure if this should be a link. looked like it was in lotus notes */}
-              <div className="fakeLink4Rob">{bill.introducer}</div>
-              {/* TODO have to scrap the date somehow, didn't see it on the bill page */}
-              **00/00/0000**
+              <Accordion flush className="introducerAccordion">
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header> {introducerShortened()} </Accordion.Header>
+                  <Accordion.Body>
+                    {`${theRestOfIntroducers()} \n**00/00/0000**`}
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+              {/* TODO have to scrap the date somehow? didn't see it on the bill page */}
             </Col>
           </Row>
         </Col>
@@ -262,8 +296,7 @@ const BillResolutionDetails = () => {
           </Row>
           <Row className="py-2">
             <Col>
-              {/* TODO 'last status text' needs to be scraped from the bill page, last item in the 'status text' list */}
-              **12/10/2021 D Carried over to 2022 Regular Session.**
+              {`${bill.statusDate}: ${bill.statusDescription}`}
             </Col>
           </Row>
         </Col>
@@ -278,8 +311,8 @@ const BillResolutionDetails = () => {
           <Row className="py-1">
             <Col>
               {/* TODO 'versions,' needs to be scraped from bill page */}
-              <div className="fakeLink4Rob">**HB1078 HD1**</div>
-              <div className="fakeLink4Rob">**HB1078**</div>
+              <div style={fakeLink4Rob}>**HB1078 HD1**</div>
+              <div style={fakeLink4Rob}>**HB1078**</div>
             </Col>
           </Row>
         </Col>
@@ -292,8 +325,8 @@ const BillResolutionDetails = () => {
           <Row className="py-1">
             <Col>
               {/* TODO 'committee reports,' same as above */}
-              <div className="fakeLink4Rob">**HB1078 HD1 HSCR479**</div>
-              <div className="fakeLink4Rob">**HB1078 HD1 HSCR784**</div>
+              <div style={fakeLink4Rob}>**HB1078 HD1 HSCR479**</div>
+              <div style={fakeLink4Rob}>**HB1078 HD1 HSCR784**</div>
             </Col>
           </Row>
         </Col>
@@ -306,8 +339,8 @@ const BillResolutionDetails = () => {
           <Row className="py-1">
             <Col>
               {/* TODO add YouTube links, same as above */}
-              <div className="fakeLink4Rob">**HEARING EDN 02-16-21 2:00P**</div>
-              <div className="fakeLink4Rob">**HEARING FIN 03-02-21 1 11:00A**</div>
+              <div style={fakeLink4Rob}>**HEARING EDN 02-16-21 2:00P**</div>
+              <div style={fakeLink4Rob}>**HEARING FIN 03-02-21 1 11:00A**</div>
             </Col>
           </Row>
         </Col>
@@ -354,7 +387,7 @@ const BillResolutionDetails = () => {
             <Col>
               {/* TODO testifier */}
               **04/04/2022 1:30 PM - Randall T. Tanaka** <br />
-              <div className="fakeLink4Rob">**03/22/2022 2:00 PM - Keith Hayashi / Randall Tanaka**</div>
+              <div style={fakeLink4Rob}>**03/22/2022 2:00 PM - Keith Hayashi / Randall Tanaka**</div>
             </Col>
           </Row>
         </Col>
@@ -367,8 +400,8 @@ const BillResolutionDetails = () => {
           <Row className="py-2">
             <Col>
               {/* TODO approved testimony list... these links are scraped from the bill page */}
-              <div className="fakeLink4Rob"><FilePdfFill /> **SB3096-HD2_EDN_04-04-22_FIN_Support.pdf**</div>
-              <div className="fakeLink4Rob"><FilePdfFill /> **SB3096-SD1_EDN_03-22-22_EDN_Support.pdf**</div>
+              <div style={fakeLink4Rob}><FilePdfFill /> **SB3096-HD2_EDN_04-04-22_FIN_Support.pdf**</div>
+              <div style={fakeLink4Rob}><FilePdfFill /> **SB3096-SD1_EDN_03-22-22_EDN_Support.pdf**</div>
             </Col>
           </Row>
         </Col>
